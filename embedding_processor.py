@@ -2,7 +2,9 @@ import time
 import psycopg2
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 def processar_embeddings_distribuido(meta_registros, intervalo_espera=5):
     # 1. Inicializa o modelo BERT na Máquina B
     print("Carregando modelo BERT (all-MiniLM-L6-v2) na Máquina B...")
@@ -11,11 +13,11 @@ def processar_embeddings_distribuido(meta_registros, intervalo_espera=5):
     # 2. Conecta ao banco de dados (coloque o IP da máquina onde o Postgres está instalado)
     try:
         conn = psycopg2.connect(
-            dbname="your_db", 
-            user="your_user", 
-            password="your_password", 
-            host="IP_DA_MAQUINA_DO_BANCO", # Ex: 192.168.1.50
-            port="5432"
+            dbname=os.getenv("DB_NAME"), 
+            user=os.getenv("DB_USER"), 
+            password=os.getenv("DB_PASSWORD"), 
+            host=os.getenv("DB_HOST_IP"), # Ex: 192.168.1.50
+            port=os.getenv("DB_PORT")
         )
         cur = conn.cursor()
     except Exception as e:

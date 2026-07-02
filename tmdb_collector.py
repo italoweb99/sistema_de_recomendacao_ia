@@ -2,10 +2,12 @@ import time
 import requests
 from tqdm import tqdm
 import psycopg2
-
+import os
+from dotenv import load_dotenv
 class TMDBDataCollector:
+    load_dotenv()
     def __init__(self, api_key, db_connection):
-        self.api_key = api_key
+        self.api_key = os.getenv("API_KEY")
         self.base_url = "https://api.themoviedb.org/3"
         self.conn = db_connection
         self.cur = db_connection.cursor()
@@ -78,11 +80,11 @@ if __name__ == "__main__":
     # 1. Gerenciamento seguro da conexão externa ao loop
     try:
         conn = psycopg2.connect(
-            dbname="your_db", 
-            user="your_user", 
-            password="your_password", 
-            host="localhost", 
-            port="5432"
+            dbname=os.getenv("DB_NAME"), 
+            user=os.getenv("DB_USER"), 
+            password=os.getenv("DB_PASSWORD"), 
+            host=os.getenv("DB_HOST"), 
+            port=os.getenv("DB_PORT")
         )
     except Exception as db_error:
         print(f"Falha crítica na conexão com o PostgreSQL: {db_error}")
