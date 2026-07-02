@@ -14,7 +14,7 @@ class TMDBDataCollector:
         self.min_interval = 60.0 / 40.0 
         self.last_request_time = 0.0
         
-        self.insert_query = "INSERT INTO Midias (id, titulo, sinopse) VALUES (%s, %s, %s);"
+        self.insert_query = "INSERT INTO Midias (id_movie, titulo, sinopse) VALUES (%s, %s, %s);"
 
     def _control_rate(self):
         """Garante que o intervalo mínimo entre as requisições seja respeitado."""
