@@ -37,9 +37,9 @@ def processar_embeddings_distribuido(meta_registros, intervalo_espera=5):
         while registros_processados < meta_registros:
             
             cur.execute("""
-                SELECT id_movie, sinopse FROM Midias 
+                SELECT id_tmdb, sinopse FROM Midias 
                 WHERE embedding IS NULL 
-                ORDER BY id_movie ASC 
+                ORDER BY id_tmdb ASC 
                 LIMIT 1;
             """)
             registro = cur.fetchone()
@@ -54,7 +54,7 @@ def processar_embeddings_distribuido(meta_registros, intervalo_espera=5):
                     cur.execute("""
                         UPDATE Midias 
                         SET embedding = %s 
-                        WHERE id_movie = %s;
+                        WHERE id_tmdb = %s;
                     """, (embedding, movie_id))
                     conn.commit()
                     
