@@ -3,8 +3,8 @@ import psycopg2
 from sentence_transformers import SentenceTransformer
 from tqdm import tqdm
 import os
-import torch
-import torch_directml  # <- Importação obrigatória para usar GPU AMD no Windows
+#import torch
+#import torch_directml  # <- Importação obrigatória para usar GPU AMD no Windows
 from dotenv import load_dotenv
 
 load_dotenv()

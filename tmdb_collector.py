@@ -87,6 +87,7 @@ if __name__ == "__main__":
             port=os.getenv("DB_PORT")
         )
     except Exception as db_error:
+     
         print(f"Falha crítica na conexão com o PostgreSQL: {db_error}")
         exit()
 
