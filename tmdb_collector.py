@@ -4,37 +4,49 @@ from tqdm import tqdm
 import psycopg2
 import os
 from dotenv import load_dotenv
+
+# Carrega as variáveis de ambiente (.env)
+load_dotenv()
+
 class TMDBDataCollector:
-    load_dotenv()
-    def __init__(self, api_key, db_connection):
+    def __init__(self, db_connection, tipo_midia):
         self.api_key = os.getenv("API_KEY")
         self.base_url = "https://api.themoviedb.org/3"
         self.conn = db_connection
         self.cur = db_connection.cursor()
+        self.tipo_midia = tipo_midia 
         
         # 40 requisições por minuto = 1 requisição a cada 1.5 segundos
         self.min_interval = 60.0 / 40.0 
         self.last_request_time = 0.0
         
-        self.insert_query = "INSERT INTO Midias (id_movie, titulo, sinopse) VALUES (%s, %s, %s);"
+        # URL base de imagens do TMDB (w500 = 500px de largura, ideal para o front)
+        self.base_image_url = "https://image.tmdb.org/t/p/w500"
+        
+        # Query de inserção atualizada com as novas colunas (gênero e capa)
+        self.insert_query = """
+            INSERT INTO Midias (id_tmdb, tipo, titulo, sinopse, generos, url_capa) 
+            VALUES (%s, %s, %s, %s, %s, %s);
+        """
 
     def _control_rate(self):
-        """Garante que o intervalo mínimo entre as requisições seja respeitado."""
+        """Garante o respeito ao limite de requisições por minuto da API."""
         elapsed = time.time() - self.last_request_time
         if elapsed < self.min_interval:
-            sleep_time = self.min_interval - elapsed
-            time.sleep(sleep_time)
+            time.sleep(self.min_interval - elapsed)
         self.last_request_time = time.time()
 
-    def get_movie_details(self, movie_id):
-        """Busca os parâmetros necessários (título e sinopse) de um filme pelo ID."""
+    def media_exists_in_db(self, media_id):
+        """Verifica se o par ID + TIPO já existe no banco para evitar duplicidade."""
+        query = "SELECT 1 FROM Midias WHERE id_tmdb = %s AND tipo = %s;"
+        self.cur.execute(query, (media_id, self.tipo_midia))
+        return self.cur.fetchone() is not None
+
+    def get_media_details(self, media_id):
+        """Busca os dados textuais, gêneros e caminhos de imagem no TMDB."""
         self._control_rate()
-        
-        url = f"{self.base_url}/movie/{movie_id}"
-        params = {
-            "api_key": self.api_key,
-            "language": "pt-BR"
-        }
+        url = f"{self.base_url}/{self.tipo_midia}/{media_id}"
+        params = {"api_key": self.api_key, "language": "pt-BR"}
         
         try:
             response = requests.get(url, params=params)
@@ -44,10 +56,24 @@ class TMDBDataCollector:
                 
             if response.status_code == 200:
                 dados = response.json()
+                
+                # Tratamento: Séries usam 'name', Filmes usam 'title'
+                titulo = dados.get("title") if self.tipo_midia == "movie" else dados.get("name")
+                
+                # Mapeamento e extração dos gêneros
+                lista_generos = [g.get("name") for g in dados.get("genres", [])]
+                generos_str = ", ".join(lista_generos) if lista_generos else None
+                
+                # Construção da URL da capa
+                poster_path = dados.get("poster_path")
+                url_capa = f"{self.base_image_url}{poster_path}" if poster_path else None
+                
                 return {
                     "status": "SUCCESS",
-                    "titulo": dados.get("title"),
-                    "sinopse": dados.get("overview")
+                    "titulo": titulo,
+                    "sinopse": dados.get("overview"),
+                    "generos": generos_str,
+                    "url_capa": url_capa
                 }
             elif response.status_code == 404:
                 return {"status": "NOT_FOUND"}
@@ -57,27 +83,20 @@ class TMDBDataCollector:
         except requests.exceptions.RequestException:
             return {"status": "CONNECTION_FAILED"}
 
-    def save_to_db(self, movie_id, titulo, sinopse):
-        """Método encapsulado para salvar dados com tratamento de transação seguro."""
+    def save_to_db(self, media_id, titulo, sinopse, generos, url_capa):
+        """Insere o novo registro mantendo o campo embedding como NULL para o outro script processar."""
         try:
-            self.cur.execute(self.insert_query, (movie_id, titulo, sinopse))
+            self.cur.execute(self.insert_query, (media_id, self.tipo_midia, titulo, sinopse, generos, url_capa))
             self.conn.commit()
             return True
         except Exception as error:
             self.conn.rollback()
-            tqdm.write(f" -> Erro ao salvar ID {movie_id} no Banco: {error}")
+            tqdm.write(f" -> Erro ao salvar ID {media_id}: {error}")
             return False
 
-    def close_cursor(self):
-        """Fecha o cursor interno quando a coleta terminar."""
-        self.cur.close()
 
-
-# --- EXECUÇÃO PRINCIPAL COM ENTRADA DO USUÁRIO ---
+# --- EXECUÇÃO PRINCIPAL DO COLETOR ---
 if __name__ == "__main__":
-    API_KEY = "SUA_CHAVE_API_AQUI"
-    
-    # 1. Gerenciamento seguro da conexão externa ao loop
     try:
         conn = psycopg2.connect(
             dbname=os.getenv("DB_NAME"), 
@@ -87,60 +106,55 @@ if __name__ == "__main__":
             port=os.getenv("DB_PORT")
         )
     except Exception as db_error:
-     
-        print(f"Falha crítica na conexão com o PostgreSQL: {db_error}")
+        print(f"Falha na conexão com o banco: {db_error}")
         exit()
 
-    collector = TMDBDataCollector(API_KEY, conn)
+    print("=== Coletor de Dados Normal (TMDB -> Banco) ===")
+    tipo_escolhido = input("Escolha o tipo de mídia ('movie' ou 'tv'): ").strip().lower()
     
-    print("=== Configuração do Coletor de Dados TMDB ===")
+    if tipo_escolhido not in ['movie', 'tv']:
+        print("Tipo inválido. Encerrando.")
+        conn.close()
+        exit()
+
+    collector = TMDBDataCollector(conn, tipo_escolhido)
+    
     try:
-        id_inicial = int(input("Digite o ID inicial do filme: "))
-        id_final = int(input("Digite o ID final do filme: "))
-        
-        if id_inicial > id_final:
-            print("Erro: O ID inicial não pode ser maior que o ID final.")
-            conn.close()
-            exit()
+        id_inicial = int(input("Digite o ID inicial: "))
+        id_final = int(input("Digite o ID final: "))
     except ValueError:
-        print("Por favor, insira apenas números inteiros válidos para os IDs.")
+        print("Insira IDs válidos.")
         conn.close()
         exit()
 
     lista_ids = range(id_inicial, id_final + 1)
-    catálogo_tcc = []
-    
-    print(f"\nIniciando varredura de {len(lista_ids)} IDs potenciais...")
-    
-    with tqdm(lista_ids, desc="Progresso da Coleta", unit="filme") as barra_progresso:
-        for movie_id in barra_progresso:
+    print(f"\nIniciando varredura de {len(lista_ids)} IDs para '{tipo_escolhido}'...")
+
+    with tqdm(lista_ids, desc="Coletando do TMDB", unit="item") as barra:
+        for media_id in barra:
             
-            resultado = collector.get_movie_details(movie_id)
+            # Se já foi coletado antes, pula direto sem gastar requisição web
+            if collector.media_exists_in_db(media_id):
+                continue
+                
+            res = collector.get_media_details(media_id)
             
-            if resultado["status"] == "STOP_429":
-                tqdm.write(f"\n[ALERTA] Código 429 recebido no ID {movie_id}. Interrompendo processo.")
+            if res["status"] == "STOP_429":
+                tqdm.write(f"\n[ALERTA] Limite 429 atingido no ID {media_id}. Interrompendo.")
                 break
                 
-            elif resultado["status"] == "SUCCESS":
-                if resultado["sinopse"]: # Filtro essencial para o BERT
-                    
-                    # Salva no PostgreSQL de forma isolada
-                    saved = collector.save_to_db(movie_id, resultado["titulo"], resultado["sinopse"])
-                    
+            elif res["status"] == "SUCCESS":
+                # Só salva se tiver sinopse (critério do BERT)
+                if res["sinopse"]:
+                    saved = collector.save_to_db(
+                        media_id, res["titulo"], res["sinopse"], res["generos"], res["url_capa"]
+                    )
                     if saved:
-                        catálogo_tcc.append({
-                            "id": movie_id,
-                            "titulo": resultado["titulo"],
-                            "sinopse": resultado["sinopse"]
-                        })
-                        barra_progresso.set_postfix(ultimo_filme=resultado["titulo"][:15])
-            
-            elif resultado["status"] == "ERROR":
-                tqdm.write(f" -> ID {movie_id} retornou status HTTP {resultado.get('code')}.")
+                        barra.set_postfix(filme=res["titulo"][:15])
+                        
+            elif res["status"] == "ERROR":
+                tqdm.write(f" -> Erro HTTP {res.get('code')} no ID {media_id}")
 
-    # 2. Fechamento limpo de recursos após o término do loop completo
-    collector.close_cursor()
+    collector.cur.close()
     conn.close()
-
-    print("\n=== Coleta Finalizada ===")
-    print(f"Total de filmes com sinopses válidas armazenados no banco: {len(catálogo_tcc)}")
+    print("\n=== Sessão de Coleta Normal Concluída! ===")
