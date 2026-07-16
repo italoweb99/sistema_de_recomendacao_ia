@@ -17,7 +17,7 @@ class TMDBDataCollector:
         self.tipo_midia = tipo_midia 
         
         # 40 requisições por minuto = 1 requisição a cada 1.5 segundos
-        self.min_interval = 60.0 / 40.0 
+        self.min_interval = 60.0 / 60.0 
         self.last_request_time = 0.0
         
         # URL base de imagens do TMDB (w500 = 500px de largura, ideal para o front)
