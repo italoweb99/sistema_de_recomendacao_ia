@@ -1,77 +1,131 @@
-import time
-import psycopg2
-from sentence_transformers import SentenceTransformer
-from tqdm import tqdm
 import os
-#import torch
-#import torch_directml  # <- Importação obrigatória para usar GPU AMD no Windows
+import time
+import requests
+import psycopg2
+from tqdm import tqdm
 from dotenv import load_dotenv
+from sentence_transformers import SentenceTransformer
 
 load_dotenv()
 
-def processar_embeddings_distribuido(meta_registros, intervalo_espera=5):
-   
-    
-    print("Carregando modelo BERT (all-MiniLM-L6-v2) na Máquina B usando GPU AMD...")
-    # Carregamos o modelo e explicitamente jogamos ele para a CPU
-    model = SentenceTransformer('all-MiniLM-L6-v2', device='cpu')
-    
-    # 2. Conecta ao banco de dados
-    try:
-        conn = psycopg2.connect(
-            dbname=os.getenv("DB_NAME"), 
-            user=os.getenv("DB_USER"), 
-            password=os.getenv("DB_PASSWORD"), 
-            host=os.getenv("DB_HOST_IP"), 
-            port=os.getenv("DB_PORT")
-        )
-        cur = conn.cursor()
-    except Exception as e:
-        print(f"Erro ao conectar ao banco: {e}")
-        return
+class EmbeddingProcessor:
+    def __init__(self, db_connection):
+        self.api_key = os.getenv("API_KEY")
+        self.base_url = "https://api.themoviedb.org/3"
+        self.conn = db_connection
+        self.cur = db_connection.cursor()
+        
+        # Carrega o modelo uma única vez na memória
+        print("Carregando modelo BERT (SentenceTransformer)...")
+        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+        
+        # Controle de taxa para a rota de keywords do TMDB
+        self.min_interval = 60.0 / 40.0
+        self.last_request_time = 0.0
 
-    registros_processados = 0
-    print(f"\nIniciando o consumidor. Meta: {meta_registros} embeddings.")
+    def _control_rate(self):
+        elapsed = time.time() - self.last_request_time
+        if elapsed < self.min_interval:
+            time.sleep(self.min_interval - elapsed)
+        self.last_request_time = time.time()
 
-    with tqdm(total=meta_registros, desc="Embeddings Gerados", unit="emb") as pbar:
-        while registros_processados < meta_registros:
-            
-            cur.execute("""
-                SELECT id_tmdb, sinopse FROM Midias 
-                WHERE embedding IS NULL 
-                ORDER BY id_tmdb ASC 
-                LIMIT 1;
-            """)
-            registro = cur.fetchone()
+    def get_media_keywords(self, id_tmdb, tipo_midia):
+        """Busca as palavras-chave da mídia no TMDB."""
+        self._control_rate()
+        endpoint = "keywords" if tipo_midia == "movie" else "aggregate_keywords"
+        url = f"{self.base_url}/{tipo_midia}/{id_tmdb}/{endpoint}"
+        params = {"api_key": self.api_key}
+        
+        try:
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                dados = response.json()
+                key_field = "keywords" if tipo_midia == "movie" else "results"
+                lista_chaves = dados.get(key_field, [])
+                # Pega as 10 principais palavras-chave
+                return ", ".join([k.get("name") for k in lista_chaves[:10]])
+            return ""
+        except Exception:
+            return ""
 
-            if registro:
-                movie_id, sinopse = registro
-                
+    def processar_fila(self, reprocessar_tudo=False):
+        """
+        Busca as mídias e gera o embedding composto.
+        Se reprocessar_tudo=True, ele ignora se o embedding já existe e regera tudo.
+        """
+        if reprocessar_tudo:
+            # Busca absolutamente tudo para unificar a base antiga
+            query_busca = "SELECT id_tmdb, tipo, titulo, sinopse, generos FROM midias;"
+            print("\n[MODO ATUALIZAÇÃO] Buscando TODAS as mídias para unificar os embeddings...")
+        else:
+            # Busca apenas o que o coletor inseriu agora e está sem vetor
+            query_busca = "SELECT id_tmdb, tipo, titulo, sinopse, generos FROM midias WHERE embedding IS NULL;"
+            print("\n[MODO FLUXO] Buscando apenas mídias novas sem embedding...")
+
+        self.cur.execute(query_busca)
+        filas = self.cur.fetchall()
+
+        if not filas:
+            print("Nenhuma mídia encontrada para processar.")
+            return
+
+        print(f"Total de mídias a processar: {len(filas)}")
+
+        with tqdm(filas, desc="Processando IA (Early Fusion)", unit="midia") as barra:
+            for registro in barra:
+                id_tmdb, tipo, titulo, sinopse, generos = registro
+
+                # 1. Busca as palavras-chave na API do TMDB
+                keywords = self.get_media_keywords(id_tmdb, tipo)
+
+                # 2. Monta o Texto Composto (Early Feature Fusion)
+                texto_composto = f"Conteúdo: {titulo}. Gêneros: {generos or ''}. Palavras-chave: {keywords}. Sinopse: {sinopse or ''}"
+
+                # 3. Gera o vetor denso através do BERT
+                embedding_vetor = self.model.encode(texto_composto).tolist()
+
+                # 4. Dá o UPDATE salvando o texto bruto de busca e o vetor convertido
+                query_update = """
+                    UPDATE midias 
+                    SET texto_busca = %s, embedding = %s::vector 
+                    WHERE id_tmdb = %s AND tipo = %s;
+                """
                 try:
-                    # O encode() automaticamente utilizará o DirectML configurado no construtor
-                    embedding = model.encode(sinopse).tolist()
-                    
-                    cur.execute("""
-                        UPDATE Midias 
-                        SET embedding = %s 
-                        WHERE id_tmdb = %s;
-                    """, (embedding, movie_id))
-                    conn.commit()
-                    
-                    registros_processados += 1
-                    pbar.update(1)
-                    
-                except Exception as err:
-                    conn.rollback()
-                    tqdm.write(f"Erro ao processar ID {movie_id}: {err}")
-            else:
-                tqdm.write(f" -> Aguardando a Máquina A popular o banco... (pausa de {intervalo_espera}s)")
-                time.sleep(intervalo_espera)
+                    self.cur.execute(query_update, (texto_composto, embedding_vetor, id_tmdb, tipo))
+                    self.conn.commit()
+                    barra.set_postfix(processado=titulo[:15])
+                except Exception as e:
+                    self.conn.rollback()
+                    tqdm.write(f"Erro ao atualizar ID {id_tmdb}: {e}")
 
-    cur.close()
-    conn.close()
-    print(f"\n=== Meta de {meta_registros} registros atingida com sucesso! ===")
 
 if __name__ == "__main__":
-    META_TOTAL = int(input("meta de filmes: "))
-    processar_embeddings_distribuido(meta_registros=META_TOTAL, intervalo_espera=10)
+    try:
+        conn = psycopg2.connect(
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT")
+        )
+    except Exception as e:
+        print(f"Erro de conexão com o banco: {e}")
+        exit()
+
+    processor = EmbeddingProcessor(conn)
+    
+    print("\n--- Gerenciador de Vetores KPlus ---")
+    print("1 - Processar apenas novos registros (Fila normal)")
+    print("2 - Reprocessar TUDO (Atualizar registros antigos para o novo padrão)")
+    opcao = input("Escolha uma opção: ").strip()
+
+    if opcao == "1":
+        processor.processar_fila(reprocessar_tudo=False)
+    elif opcao == "2":
+        processor.processar_fila(reprocessar_tudo=True)
+    else:
+        print("Opção inválida.")
+
+    processor.cur.close()
+    conn.close()
+    print("\nProcessamento concluído com sucesso!")
