@@ -1,0 +1,26 @@
+name: Versionamento Automático
+
+on:
+  push:
+    branches:
+      - main  # Dispara a automação sempre que houver push ou merge na main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Permissão obrigatória para a Action criar a Tag e o Release no seu GitHub
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Garante que todo o histórico de commits seja baixado para calcular a versão
+
+      - name: Gerar Tag Semântica Automática
+        id: tag_version
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Token automático do GitHub
+          WITH_V: true                               # Cria a tag com 'v' na frente (ex: v1.0.1)
+          DEFAULT_BUMP: patch                        # Se o commit for comum, aumenta o Patch por padrão

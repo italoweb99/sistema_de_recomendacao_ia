@@ -5,7 +5,7 @@ from schemas import MidiaResponse, AvaliacaoCreate
 app = FastAPI(
     title= "Api de recomendação de filmes",
     description="API de recomendação de filmes",
-    version="1.0.0"
+    version="0.1.0"
 )
 
 @app.get("/",tags=["HealthCheack"])
