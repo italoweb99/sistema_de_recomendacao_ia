@@ -20,7 +20,7 @@ class EmbeddingProcessor:
         self.model = SentenceTransformer("all-MiniLM-L6-v2")
         
         # Controle de taxa para a rota de keywords do TMDB
-        self.min_interval = 60.0 / 40.0
+        self.min_interval = 60.0 / 60.0
         self.last_request_time = 0.0
 
     def _control_rate(self):
@@ -105,7 +105,7 @@ if __name__ == "__main__":
             dbname=os.getenv("DB_NAME"),
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
-            host=os.getenv("DB_HOST"),
+            host=os.getenv("DB_HOST_IP"),
             port=os.getenv("DB_PORT")
         )
     except Exception as e:
