@@ -4,7 +4,7 @@ from tqdm import tqdm
 import psycopg2
 import os
 from dotenv import load_dotenv
-
+from deep_translator import GoogleTranslator
 # Carrega as variáveis de ambiente (.env)
 load_dotenv()
 
@@ -22,7 +22,8 @@ class TMDBDataCollector:
         
         # URL base de imagens do TMDB (w500 = 500px de largura, ideal para o front)
         self.base_image_url = "https://image.tmdb.org/t/p/w500"
-        
+        self.genero_cache = {}
+        self.translator = GoogleTranslator(source='en', target='pt')
         # Query de inserção atualizada com as novas colunas (gênero e capa)
         self.insert_query = """
             INSERT INTO Midias (id_tmdb, tipo, titulo, sinopse, generos, url_capa) 
@@ -46,8 +47,7 @@ class TMDBDataCollector:
         """Busca os dados textuais, gêneros e caminhos de imagem no TMDB."""
         self._control_rate()
         url = f"{self.base_url}/{self.tipo_midia}/{media_id}"
-        params = {"api_key": self.api_key, "language": "pt-BR"}
-        
+        params = {"api_key": self.api_key, "language": "pt-BR"}        
         try:
             response = requests.get(url, params=params)
             
@@ -62,6 +62,9 @@ class TMDBDataCollector:
                 
                 # Mapeamento e extração dos gêneros
                 lista_generos = [g.get("name") for g in dados.get("genres", [])]
+                #Todo: tradução dos generos
+                if self.tipo_midia == "tv":
+                    lista_generos = self.traduz_genero(lista_generos)
                 generos_str = ", ".join(lista_generos) if lista_generos else None
                 
                 # Construção da URL da capa
@@ -93,6 +96,24 @@ class TMDBDataCollector:
             self.conn.rollback()
             tqdm.write(f" -> Erro ao salvar ID {media_id}: {error}")
             return False
+    def traduz_genero(self,generos):
+        retorno = []
+        if generos:
+            for genero in generos:
+                genero_limpo = genero.lower().strip()
+                if genero_limpo in self.genero_cache:
+                    retorno.append(self.genero_cache[genero_limpo])
+                try:
+                    traducao = self.translator.translate(genero_limpo)
+                    self.genero_cache[genero_limpo] = traducao
+                    retorno.append(genero_limpo)
+                except Exception as error:
+                    print (f"Falha ao traduzir genero:{error}")
+                    retorno.append(genero_limpo)
+            return retorno
+
+
+                    
 
 
 # --- EXECUÇÃO PRINCIPAL DO COLETOR ---

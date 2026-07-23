@@ -5,7 +5,7 @@ import psycopg2
 from tqdm import tqdm
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
-
+from deep_translator import GoogleTranslator
 load_dotenv()
 
 class EmbeddingProcessor:
@@ -17,22 +17,36 @@ class EmbeddingProcessor:
         
         # Carrega o modelo uma única vez na memória
         print("Carregando modelo BERT (SentenceTransformer)...")
-        self.model = SentenceTransformer("all-MiniLM-L6-v2")
+        self.model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
         
         # Controle de taxa para a rota de keywords do TMDB
         self.min_interval = 60.0 / 60.0
         self.last_request_time = 0.0
-
+        self.translator = GoogleTranslator(source='en', target='pt')
+        self.keywords_cache = {}
     def _control_rate(self):
         elapsed = time.time() - self.last_request_time
         if elapsed < self.min_interval:
             time.sleep(self.min_interval - elapsed)
         self.last_request_time = time.time()
+    def _traduzir_keyworld(self,palavra):
+        if not palavra:
+            return ""
+        palavra_limpa = palavra.lower().strip()
+        if palavra_limpa in self.keywords_cache:
+            return self.keywords_cache[palavra_limpa]
+        try:
+            traducao = self.translator.traslate(palavra_limpa)
+            self.keywords_cache[palavra_limpa] = traducao
+            return traducao
+        except Exception:
+            return palavra_limpa
+
 
     def get_media_keywords(self, id_tmdb, tipo_midia):
         """Busca as palavras-chave da mídia no TMDB."""
         self._control_rate()
-        endpoint = "keywords" if tipo_midia == "movie" else "aggregate_keywords"
+        endpoint = "keywords" 
         url = f"{self.base_url}/{tipo_midia}/{id_tmdb}/{endpoint}"
         params = {"api_key": self.api_key}
         
@@ -43,7 +57,9 @@ class EmbeddingProcessor:
                 key_field = "keywords" if tipo_midia == "movie" else "results"
                 lista_chaves = dados.get(key_field, [])
                 # Pega as 10 principais palavras-chave
-                return ", ".join([k.get("name") for k in lista_chaves[:10]])
+                keyworlds_en = [k.get["name"] for k in lista_chaves[:10] if k.get("name")]
+                keyworlds_pt = [self._traduzir_keyworld(kw) for kw in keyworlds_en]
+                return ", ".join(keyworlds_pt)
             return ""
         except Exception:
             return ""

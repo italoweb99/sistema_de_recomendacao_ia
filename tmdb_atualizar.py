@@ -4,7 +4,7 @@ from tqdm import tqdm
 import psycopg2
 import os
 from dotenv import load_dotenv
-
+from deep_translator import GoogleTranslator
 load_dotenv()
 
 class TMDBDataCollector:
@@ -16,7 +16,8 @@ class TMDBDataCollector:
         self.tipo_midia = tipo_midia 
         self.min_interval = 60.0 / 60.0
         self.last_request_time = 0.0
-        
+        self.genero_cache = {}
+        self.translator = GoogleTranslator(source='en', target='pt')
         # URL base de imagens do TMDB (w500 significa 500px de largura, ideal para mobile)
         self.base_image_url = "https://image.tmdb.org/t/p/w500"
 
@@ -84,6 +85,27 @@ class TMDBDataCollector:
             self.conn.rollback()
             tqdm.write(f" -> Erro ao atualizar ID {media_id}: {error}")
             return False
+        
+    def traduz_genero(self, generos):
+        if generos:
+            retorno = []
+            #Divide os generos em palavras separadas
+            generos_separados = generos.split(",")
+            #Traduz cada palavra separadamente e depois as junta em um array
+            for palavra in generos_separados:
+                palavra_limpa = palavra.lower().strip()
+                if palavra_limpa in self.genero_cache:
+                    retorno.append(self.genero_cache[palavra_limpa])
+                try:
+                    traducao=self.translator.translate(palavra_limpa)
+                    self.genero_cache[palavra_limpa] = traducao
+                    retorno.append(traducao)
+                    
+                except Exception as erro:
+                    print(f"]Não foi possivel traduzir a palavra:{erro}")
+                    retorno.append(palavra_limpa)
+            return",".join(retorno)
+
 
 if __name__ == "__main__":
     try:
@@ -93,24 +115,45 @@ if __name__ == "__main__":
         )
     except Exception as db_error:
         print(f"Falha na conexão: {db_error}"); exit()
+    atualizacao_tipo = int(input("digite 1 para traduzir generos de serie e 2 para obter capas e generos de filmes ou series "))
+    if atualizacao_tipo == 1:
+        collector = TMDBDataCollector(conn, 'tv')
+        query = "SELECT id_tmdb,generos FROM midias WHERE tipo = 'tv';"
+        with conn.cursor() as cur:
+            cur.execute(query)
+            dados = cur.fetchall()
+            ids_series = [row[0] for row in dados]
+            with tqdm (dados, desc="Atualizando Generos", unit="serie")as barra:
+                for midia_id,genero in barra:
+                    traducao = collector.traduz_genero(genero)
+                    try:
+                        query = "UPDATE midias SET generos = %s WHERE id_tmdb = %s AND tipo = 'tv'"
+                        collector.cur.execute(query,(traducao,midia_id))
+                        collector.conn.commit()
+                    except Exception as error:
+                        collector.conn.rollback()
+                        tqdm.write(f" -> Erro ao atualizar ID {midia_id}: {error}")
 
-    tipo_escolhido = input("Tipo de mídia para atualizar ('movie' or 'tv'): ").strip().lower()
-    collector = TMDBDataCollector(conn, tipo_escolhido)
-    
-    # Mapeia os IDs incompletos que já estão guardados no banco
-    ids_incompletos = collector.get_missing_media_from_db()
-    print(f"\nForam encontrados {len(ids_incompletos)} registros para enriquecer de dados.")
 
-    if ids_incompletos:
-        with tqdm(ids_incompletos, desc="Enriquecendo Banco", unit="midia") as barra:
-            for media_id in barra:
-                res = collector.get_media_details(media_id)
-                
-                if res["status"] == "STOP_429":
-                    break
-                elif res["status"] == "SUCCESS":
-                    collector.update_media_in_db(media_id, res["generos"], res["url_capa"])
-                    barra.set_postfix(id=media_id)
+       
+    else:
+        tipo_escolhido = input("Tipo de mídia para atualizar ('movie' or 'tv'): ").strip().lower()
+        collector = TMDBDataCollector(conn, tipo_escolhido)
+        
+        # Mapeia os IDs incompletos que já estão guardados no banco
+        ids_incompletos = collector.get_missing_media_from_db()
+        print(f"\nForam encontrados {len(ids_incompletos)} registros para enriquecer de dados.")
+
+        if ids_incompletos:
+            with tqdm(ids_incompletos, desc="Enriquecendo Banco", unit="midia") as barra:
+                for media_id in barra:
+                    res = collector.get_media_details(media_id)
+                    
+                    if res["status"] == "STOP_429":
+                        break
+                    elif res["status"] == "SUCCESS":
+                        collector.update_media_in_db(media_id, res["generos"], res["url_capa"])
+                        barra.set_postfix(id=media_id)
 
     collector.cur.close()
     conn.close()
