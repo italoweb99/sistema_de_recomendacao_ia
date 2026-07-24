@@ -115,7 +115,7 @@ if __name__ == "__main__":
         )
     except Exception as db_error:
         print(f"Falha na conexão: {db_error}"); exit()
-    atualizacao_tipo = int(input("digite 1 para traduzir generos de serie e 2 para obter capas e generos de filmes ou series "))
+    atualizacao_tipo = int(input("Digite 1 para traduzir generos de serie e 2 para obter capas e generos de filmes ou series "))
     if atualizacao_tipo == 1:
         collector = TMDBDataCollector(conn, 'tv')
         query = "SELECT id_tmdb,generos FROM midias WHERE tipo = 'tv';"
