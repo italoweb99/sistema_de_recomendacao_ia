@@ -96,6 +96,7 @@ class TMDBDataCollector:
                 palavra_limpa = palavra.lower().strip()
                 if palavra_limpa in self.genero_cache:
                     retorno.append(self.genero_cache[palavra_limpa])
+                    continue
                 try:
                     traducao=self.translator.translate(palavra_limpa)
                     self.genero_cache[palavra_limpa] = traducao
