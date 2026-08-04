@@ -12,7 +12,7 @@ app = FastAPI(
 
 # CARREGAMENTO GLOBAL DO MODELO: Carrega uma vez na inicialização da API, economizando memória e CPU
 print("Carregando modelo SentenceTransformer...")
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 print("Modelo carregado com sucesso!")
 
 
