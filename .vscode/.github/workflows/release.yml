@@ -9,7 +9,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Permissão obrigatória para a Action criar a Tag e o Release no seu GitHub
+      contents: write # Permissão obrigatória para a Action criar a Tag e a Release
 
     steps:
       - name: Checkout do Código
@@ -24,3 +24,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Token automático do GitHub
           WITH_V: true                               # Cria a tag com 'v' na frente (ex: v1.0.1)
           DEFAULT_BUMP: patch                        # Se o commit for comum, aumenta o Patch por padrão
+
+      - name: Criar Release no GitHub
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          generate_release_notes: true # Gera automaticamente a lista de mudanças com base nos PRs/commits
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
