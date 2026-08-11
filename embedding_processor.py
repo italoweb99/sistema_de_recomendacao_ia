@@ -6,7 +6,9 @@ from tqdm import tqdm
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
 from deep_translator import GoogleTranslator
+
 load_dotenv()
+
 
 class EmbeddingProcessor:
     def __init__(self, db_connection):
@@ -14,69 +16,78 @@ class EmbeddingProcessor:
         self.base_url = "https://api.themoviedb.org/3"
         self.conn = db_connection
         self.cur = db_connection.cursor()
-        
+
         # Carrega o modelo uma única vez na memória
         print("Carregando modelo BERT (SentenceTransformer)...")
         self.model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
-        
+
         # Controle de taxa para a rota de keywords do TMDB
         self.min_interval = 60.0 / 60.0
         self.last_request_time = 0.0
-        self.translator = GoogleTranslator(source='en', target='pt')
+        self.translator = GoogleTranslator(source="en", target="pt")
         self.keywords_cache = {}
+
     def _control_rate(self):
         elapsed = time.time() - self.last_request_time
         if elapsed < self.min_interval:
             time.sleep(self.min_interval - elapsed)
         self.last_request_time = time.time()
-    def _traduzir_keyworld(self,palavra):
+
+    def _traduzir_keyword(self, palavra):
         if not palavra:
             return ""
         palavra_limpa = palavra.lower().strip()
         if palavra_limpa in self.keywords_cache:
             return self.keywords_cache[palavra_limpa]
         try:
-            traducao = self.translator.traslate(palavra_limpa)
+            # Correção do typo: 'traslate' -> 'translate'
+            traducao = self.translator.translate(palavra_limpa)
             self.keywords_cache[palavra_limpa] = traducao
             return traducao
         except Exception:
             return palavra_limpa
 
-
     def get_media_keywords(self, id_tmdb, tipo_midia):
-        """Busca as palavras-chave da mídia no TMDB."""
+        """Busca as palavras-chave da mídia no TMDB e traduz para Português."""
         self._control_rate()
-        endpoint = "keywords" 
+        endpoint = "keywords"
         url = f"{self.base_url}/{tipo_midia}/{id_tmdb}/{endpoint}"
         params = {"api_key": self.api_key}
-        
+
         try:
             response = requests.get(url, params=params)
             if response.status_code == 200:
                 dados = response.json()
                 key_field = "keywords" if tipo_midia == "movie" else "results"
                 lista_chaves = dados.get(key_field, [])
-                # Pega as 10 principais palavras-chave
-                keyworlds_en = [k.get["name"] for k in lista_chaves[:10] if k.get("name")]
-                keyworlds_pt = [self._traduzir_keyworld(kw) for kw in keyworlds_en]
-                return ", ".join(keyworlds_pt)
+
+             
+                keywords_en = [
+                    k.get("name") for k in lista_chaves[:10] if k.get("name")
+                ]
+                keywords_pt = [self._traduzir_keyword(kw) for kw in keywords_en]
+                return ", ".join(keywords_pt)
             return ""
         except Exception:
             return ""
 
     def processar_fila(self, reprocessar_tudo=False):
         """
-        Busca as mídias e gera o embedding composto.
-        Se reprocessar_tudo=True, ele ignora se o embedding já existe e regera tudo.
+        Busca as mídias, gera o embedding composto e atualiza tanto o vetor 
+        quanto o índice FTS (Full-Text Search) no PostgreSQL.
         """
         if reprocessar_tudo:
-            # Busca absolutamente tudo para unificar a base antiga
+            # Busca todas as mídias para recalcular embedding e FTS
             query_busca = "SELECT id_tmdb, tipo, titulo, sinopse, generos FROM midias;"
-            print("\n[MODO ATUALIZAÇÃO] Buscando TODAS as mídias para unificar os embeddings...")
+            print("\n[MODO ATUALIZAÇÃO] Buscando TODAS as mídias para unificar os embeddings e FTS...")
         else:
-            # Busca apenas o que o coletor inseriu agora e está sem vetor
-            query_busca = "SELECT id_tmdb, tipo, titulo, sinopse, generos FROM midias WHERE embedding IS NULL;"
-            print("\n[MODO FLUXO] Buscando apenas mídias novas sem embedding...")
+            # Busca mídias que estão sem embedding OU sem fts_vector
+            query_busca = """
+                SELECT id_tmdb, tipo, titulo, sinopse, generos 
+                FROM midias 
+                WHERE embedding IS NULL OR fts_vector IS NULL;
+            """
+            print("\n[MODO FLUXO] Buscando mídias pendentes de vetorização ou FTS...")
 
         self.cur.execute(query_busca)
         filas = self.cur.fetchall()
@@ -87,11 +98,11 @@ class EmbeddingProcessor:
 
         print(f"Total de mídias a processar: {len(filas)}")
 
-        with tqdm(filas, desc="Processando IA (Early Fusion)", unit="midia") as barra:
+        with tqdm(filas, desc="Processando IA & FTS", unit="midia") as barra:
             for registro in barra:
                 id_tmdb, tipo, titulo, sinopse, generos = registro
 
-                # 1. Busca as palavras-chave na API do TMDB
+                # 1. Busca e traduz as palavras-chave na API do TMDB
                 keywords = self.get_media_keywords(id_tmdb, tipo)
 
                 # 2. Monta o Texto Composto (Early Feature Fusion)
@@ -100,14 +111,19 @@ class EmbeddingProcessor:
                 # 3. Gera o vetor denso através do BERT
                 embedding_vetor = self.model.encode(texto_composto).tolist()
 
-                # 4. Dá o UPDATE salvando o texto bruto de busca e o vetor convertido
+                # 4. Atualiza o texto_busca, embedding E o fts_vector (FTS em Português)
                 query_update = """
                     UPDATE midias 
-                    SET texto_busca = %s, embedding = %s::vector 
+                    SET texto_busca = %s, 
+                        embedding = %s::vector,
+                        fts_vector = to_tsvector('portuguese', %s)
                     WHERE id_tmdb = %s AND tipo = %s;
                 """
                 try:
-                    self.cur.execute(query_update, (texto_composto, embedding_vetor, id_tmdb, tipo))
+                    self.cur.execute(
+                        query_update,
+                        (texto_composto, embedding_vetor, texto_composto, id_tmdb, tipo)
+                    )
                     self.conn.commit()
                     barra.set_postfix(processado=titulo[:15])
                 except Exception as e:
@@ -122,17 +138,17 @@ if __name__ == "__main__":
             user=os.getenv("DB_USER"),
             password=os.getenv("DB_PASSWORD"),
             host=os.getenv("DB_HOST_IP"),
-            port=os.getenv("DB_PORT")
+            port=os.getenv("DB_PORT"),
         )
     except Exception as e:
         print(f"Erro de conexão com o banco: {e}")
         exit()
 
     processor = EmbeddingProcessor(conn)
-    
-    print("\n--- Gerenciador de Vetores KPlus ---")
-    print("1 - Processar apenas novos registros (Fila normal)")
-    print("2 - Reprocessar TUDO (Atualizar registros antigos para o novo padrão)")
+
+    print("\n--- Gerenciador de Vetores e FTS KPlus ---")
+    print("1 - Processar pendentes (Fila normal: novos sem embedding ou FTS)")
+    print("2 - Reprocessar TUDO (Regerar vetores, palavras-chave e FTS do zero)")
     opcao = input("Escolha uma opção: ").strip()
 
     if opcao == "1":
