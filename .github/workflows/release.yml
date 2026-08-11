@@ -25,6 +25,9 @@ jobs:
           WITH_V: true                               # Cria a tag com 'v' na frente (ex: v1.0.1)
           DEFAULT_BUMP: patch                        # Se o commit for comum, aumenta o Patch por padrão
 
+          MINOR_STRING_TOKEN: feat
+          MAJOR_STRING_TOKEN: BREAKING CHANGE
+          
       - name: Criar Release no GitHub
         uses: softprops/action-gh-release@v2
         with:
