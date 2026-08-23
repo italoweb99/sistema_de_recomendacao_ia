@@ -1,24 +1,41 @@
 from fastapi import FastAPI, HTTPException, Query, Depends, status
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import List, Optional
 from pydantic import BaseModel, Field
 from sentence_transformers import SentenceTransformer
 import psycopg2
 from psycopg2.extras import RealDictCursor
-from schemas import (MidiaResponse,UsuarioCadastro,TokenResponse,AvaliacaoSchema)
+from .schemas import (MidiaResponse, UsuarioCadastro, TokenResponse, AvaliacaoSchema)
 from dotenv import load_dotenv
 import os
 load_dotenv()
 # Importa as funções do módulo de autenticação
-from auth import (
-    verificar_senha, 
-    gerar_hash_senha, 
-    criar_access_token, 
+from .auth import (
+    verificar_senha,
+    gerar_hash_senha,
+    criar_access_token,
     obter_usuario_logado_id,
-    oauth2_scheme
+    oauth2_scheme,
 )
 
 app = FastAPI(title="KPlus API - Recomendador Híbrido Triplo com Autenticação")
+
+# Habilita CORS para o frontend em desenvolvimento (Vite pode usar 5173/5174)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
