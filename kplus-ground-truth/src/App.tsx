@@ -77,7 +77,10 @@ export default function PainelRecomendador() {
     try {
       const params = new URLSearchParams({
         usr_query: termoBuscaBanco,
-        limit: '20'
+        limit: '20',
+        peso_semantico: '0.0',
+        peso_textual: '1.0',
+        peso_colaborativo: '0.0'
       });
 
       const res = await fetch(`${API_BASE_URL}/midias/recomendar?${params.toString()}`, {

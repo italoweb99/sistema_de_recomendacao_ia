@@ -1,0 +1,527 @@
+[
+  {
+    "id": 1787872047337,
+    "usuario_id": "2",
+    "query": "filme de guerra espacial com rebeldes e androids",
+    "midias_esperadas": [
+      {
+        "id": 1893,
+        "titulo": "Star Wars: Episódio I - A Ameaça Fantasma",
+        "tipo": "movie",
+        "sinopse": "Enquanto resgatam a Rainha Amidala, governante de um planeta pacífico invadido por forças ameaçadoras, os Cavaleiros Jedi Obi-Wan Kenobi e Qui-Gon Jinn descobrem Anakin Skywalker, uma criança prodígio de 9 anos excepcionalmente poderosa na Força.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gNk8UNAumXlfCdtaxDqsQe7ZGlt.jpg"
+      },
+      {
+        "id": 1895,
+        "titulo": "Star Wars: Episódio III - A Vingança dos Sith",
+        "tipo": "movie",
+        "sinopse": "As Guerras Clônicas estão em pleno andamento e Anakin Skywalker mantém um elo de lealdade com Palpatine, ao mesmo tempo em que luta para que seu casamento com Padmé Amidala não seja afetado por esta situação. Seduzido por promessas de poder, Anakin se aproxima cada vez mais de Darth Sidious até se tornar o temível Darth Vader. Juntos eles tramam um plano para aniquilar de uma vez por todas com os cavaleiros jedi.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/nuF5yWtTJEEAd4Qa6cVkYz1XCST.jpg"
+      },
+      {
+        "id": 1894,
+        "titulo": "Star Wars: Episódio II - Ataque dos Clones",
+        "tipo": "movie",
+        "sinopse": "Com a missão de proteger a Senadora Amidala, Anakin Skywalker descobre o seu amor por ela, do mesmo modo que vai conhecendo seu lado sombrio. Obi-Wan Kenobi descobre um exército de clones à medida que a Galáxia caminha para uma grande guerra.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg"
+      },
+      {
+        "id": 1892,
+        "titulo": "Guerra nas Estrelas: O Retorno de Jedi",
+        "tipo": "movie",
+        "sinopse": "O imperador está supervisionando a construção de uma nova Estrela da Morte. Enquanto isso Luke Skywalker liberta Han Solo e a Princesa Leia das mãos de Jaba. Luke só se tornará um cavaleiro jedi quando destruir Darth Vader, que ainda pretende atraí-lo para o lado sombrio da Força.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/llaJ35p5e23ygDbqd0H3otJLWsA.jpg"
+      },
+      {
+        "id": 1891,
+        "titulo": "Guerra nas Estrelas: O Império Contra-Ataca",
+        "tipo": "movie",
+        "sinopse": "As forças imperais comandadas por Darth Vader lançam um ataque contra os membros da resistência, que são obrigados a fugir. Enquanto isso Luke Skywalker tenta encontrar o Mestre Yoda, que poderá ensiná-lo a dominar a \"Força\" e torná-lo um cavaleiro jedi. No entanto, Darth Vader planeja levá-lo para o lado negro da \"Força\".",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/dLGT8b4Ut10z44uYLaip4QiwKta.jpg"
+      },
+      {
+        "id": 4194,
+        "titulo": "Star Wars: The Clone Wars",
+        "tipo": "tv",
+        "sinopse": "A guerra dos clones se expande por toda a galáxia, e os heróis Jedi lutam desesperadamente a fim de manter a ordem e a paz. Sistemas sucumbem perante o lado negro da força e a República Galáctica está sofrendo contínua pressão dos Separatistas e seu infinito exército de dróides.",
+        "generos": "ação e aventura, animação, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/pvDFqSHSdyWiPu0ihJJkDXxnBM9.jpg"
+      },
+      {
+        "id": 25,
+        "titulo": "Star Wars: Droids",
+        "tipo": "tv",
+        "sinopse": "Anos antes de conhecerem Luke Skywalker, seus droides favoritos de Star Wars vagavam pela galáxia em aventuras superempolgantes! Junte-se a R2-D2 e C-3PO nesta série animada cheia de ação, na qual eles exploram os confins do espaço em sua busca interminável por um bom mestre!",
+        "generos": "ação e aventura, animação, infantil, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/AuGZbGeOQt30zsoTUSPlS8kMe1v.jpg"
+      },
+      {
+        "id": 12180,
+        "titulo": "Star Wars: A Guerra dos Clones",
+        "tipo": "movie",
+        "sinopse": "Enquanto as Guerras Clônicas varrem a galáxia, Anakin Skywalker e sua nova Padawan, Ahsoka Tano, embarcam em uma missão para resgatar o filho de Jabba, o Hutt. O renegado Conde Dookan, contudo, está determinado a garantir que eles falhem.",
+        "generos": "Ação, Animação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/cOPlN7s32Unwh0ZveLB54z6glBQ.jpg"
+      },
+      {
+        "id": 3122,
+        "titulo": "Star Wars: Guerras Clônicas",
+        "tipo": "tv",
+        "sinopse": "A série narra a batalha de Muunilist, onde Obi-Wan Kenobi e Anakin Skywalker lutaram para derrubar o Clã Intergalático de Bancos, enquanto o Conde Dooku contratava Asajj Ventress para assassinar Anakin. Além da batalha de Muunilist, mostra vários outros Jedi batalhando em outros locais, como Mace Windu em Dathomir e Kit Fisto em Mon Calamari.",
+        "generos": "ação e aventura, animação, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/jKfAVTGkf9qpGPZ4E1pNKdW6vra.jpg"
+      },
+      {
+        "id": 4621,
+        "titulo": "Galáctica - Batalha nas Estrelas",
+        "tipo": "tv",
+        "sinopse": "Os acontecimentos de \"Galáctica - Batalha nas Estrelas\" ocorrem 30 anos após \"Galáctica - Astronave de Combate\". Ao chegar à Terra, os habitantes da frota estelar renegada entram em ação quando percebem que os terráqueos não são avançados o suficiente para ajudar na batalha contra os Cilônios.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/spBhYAvmJnP6wSxT1omQn7TZwoY.jpg"
+      },
+      {
+        "id": 314,
+        "titulo": "Jornada nas Estrelas: Enterprise",
+        "tipo": "tv",
+        "sinopse": "Enterprise é a quinta série televisiva com atores reais situada no universo de Jornada nas Estrelas. Criada por Rick Berman e Brannon Braga e baseada na clássica série de Jornada nas Estrelas de 1966 (e nas outras séries seguintes) de Gene Roddenberry, Enterprise foi uma prequel que se passava um século antes da época de Kirk e Spock. A série mostrava as viagens da primeira nave estelar Enterprise e os primeiros passos da humanidade na fronteira final.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/kevpjmNHEpefhQueXqi0vIlGF6Z.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788481753206,
+    "usuario_id": "2",
+    "query": "filme de aventura com dinossauros e um toque de terror",
+    "midias_esperadas": [
+      {
+        "id": 329,
+        "titulo": "Jurassic Park: O Parque dos Dinossauros",
+        "tipo": "movie",
+        "sinopse": "Um parque construído por um milionário tem dinossauros diversos como habitantes, extintos a sessenta e cinco milhões de anos. Isto é possível por ter sido encontrado um inseto fossilizado, que tinha sugado sangue destes dinossauros, de onde pôde-se isolar o DNA, o código químico da vida e, a partir deste ponto, recriá-los em laboratório. Mas, o que parecia ser um sonho se torna um pesadelo, quando a experiência sai do controle de seus criadores.",
+        "generos": "Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/mgjJ7FH4V3exsmoHwXrmsUhn0h1.jpg"
+      },
+      {
+        "id": 330,
+        "titulo": "O Mundo Perdido: Jurassic Park",
+        "tipo": "movie",
+        "sinopse": "Quatro anos após o terrível fiasco de seu Jurassic Park, o multimilionário John Hammond chama o Dr. Ian Malcolm de volta e o choca ao lhe revelar que, em uma ilha deserta próxima ao antigo parque, centenas de dinossauros de todos os tamanhos e espécies vagam livremente. Inicialmente relutante, Ian decide se juntar a uma expedição científica para documentar o comportamento natural dos animais, juntamente com sua namorada paleontóloga Sarah Harding, o documentarista Nick Van Owen e o especialista em tecnologia Eddie Carr.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gkF6JPfru2FEIP9du7QyHVLSOzu.jpg"
+      },
+      {
+        "id": 331,
+        "titulo": "Jurassic Park 3",
+        "tipo": "movie",
+        "sinopse": "Precisando de fundos para pesquisas, o Dr. Alan Grant aceita uma grande quantia em dinheiro para acompanhar Paul e Amanda Kirby em um passeio aéreo pela infame Isla Sorna. Não demora muito para que o inferno comece e os viajantes encalhados tenham que lutar pela sobrevivência enquanto uma série de novos - e ainda mais mortais - dinossauros tentam fazer lanches com eles.",
+        "generos": "Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1dObEUGvS4cTbVNi8ewvd6gLIv4.jpg"
+      },
+      {
+        "id": 2981,
+        "titulo": "O Mundo Perdido",
+        "tipo": "movie",
+        "sinopse": "Um grupo de cientistas fazem uma expedição para os confins da floresta amazônica e acabam descobrindo um local onde os dinossauros ainda vivem. Primeira adaptação do clássico livro de Arthur Conan Doyle.",
+        "generos": "Aventura, Drama, Fantasia, Ficção científica, Romance, Terror, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/4eSeJ8eg9vv8c91KGeeY4fl8zSK.jpg"
+      },
+      {
+        "id": 9607,
+        "titulo": "Super Mario Bros.",
+        "tipo": "movie",
+        "sinopse": "Há muito tempo, a Terra era dominada pelos dinossauros e ninguém os incomodava. A vida era boa em um lugar que, após 65 milhões de anos, passou a se chamar Brooklyn. Então algo inesperado aconteceu: Um meteoro gigante atingiu a Terra e os dinossauros foram exterminados. Entretanto, o impacto criou uma dimensão paralela, onde alguns dinossauros sobreviveram e se tornaram uma espécie inteligente e agressiva. Brooklyn, 20 anos atrás. Na porta de um convento é deixado um ovo, que é recolhido pelas freiras e dele nasce uma criança. Brooklyn, dias atuais. Os encanadores Mario Mario (Bob Hoskins) e Luigi Mario (John Leguizamo) se vêem em uma aventura fantástica para salvar a Princesa Daisy (Samantha Mathis) em um escondido mundo, Dinohattan, onde os habitantes evoluíram dos dinossauros. A dupla enfrenta desafios mortais do Rei Koopa (Dennis Hopper) e batalham contra répteis enormes para impedir um terrível plano, que busca invadir nosso mundo.",
+        "generos": "Aventura, Comédia, Família, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/yt5bbMfKpg1nRr4k5edxs7tPK2m.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788481816679,
+    "usuario_id": "2",
+    "query": "serie em que adolescentes tem um programa na internet",
+    "midias_esperadas": [
+      {
+        "id": 5371,
+        "titulo": "iCarly",
+        "tipo": "tv",
+        "sinopse": "Carly Shay tem sua vida radicalmente mudada quando seu programa na internet torna-se um sucesso entre os jovens. Como seus pais estão viajando, Carly precisa contar com a ajuda de seu irmão e amigos para administrar sua recente fama.",
+        "generos": "comédia, drama, família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/pWQIuqjcSvrPlRVMm1oHRSnVeFQ.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788483707968,
+    "usuario_id": "3",
+    "query": "um filme de desenho animado com bonecos que interagem com os humanos, que interesse tanto o público adulto quanto crianças",
+    "midias_esperadas": [
+      {
+        "id": 10193,
+        "titulo": "Toy Story 3",
+        "tipo": "movie",
+        "sinopse": "Woody, Buzz e o resto dos brinquedos de Andy não são usados há anos. Com Andy prestes a ir para a faculdade, o grupo acaba por ser deixado acidentalmente numa creche. Os brinquedos devem se unir para escapar e voltar para casa de Andy.",
+        "generos": "Animação, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/rf67AeS9nP8DD7dZYbvhjEVoIBf.jpg"
+      },
+      {
+        "id": 862,
+        "titulo": "Toy Story: Um Mundo de Aventuras",
+        "tipo": "movie",
+        "sinopse": "Buzz Lightyear é o novo e sofisticado astronauta de brinquedo do garoto Andy. Buzz não imaginava que encontraria um rival: Woody, um cowboy de brinquedo que, dominado pelo ciúme, acredita ter perdido um lugar precioso no coração do seu dono. Os dois brinquedos vivem brigando até que vão parar nas garras do vizinho, um verdadeiro destruidor de brinquedos. Agora, mais do que nunca, Buzz e Woody precisam precisam se unir para escapar do perigo. Com a ajuda de seus amigos da caixa de brinquedos, eles vão viver uma incrível aventura.",
+        "generos": "Animação, Aventura, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/686F0CEPmI4ZXjFbWtIHQOBwnfI.jpg"
+      },
+      {
+        "id": 863,
+        "titulo": "Toy Story 2",
+        "tipo": "movie",
+        "sinopse": "Quando Andy viaja para um acampamento de verão, Woody é sequestrado por Al, um ambiocioso colecionador, que precisa do brinquedo favorito de Andy para completar sua coleção da Gangue do Rodeio. Junto com Jessie, Bala no Alvo e Mineiro, Woody corre o risco de ter que passar o resto de sua vida em exposição num museu. Agora, Buzz, Sr. Cabeça de Batata, Porquinho, Rex e Slinky terão que salvar seu amigo e trazê-lo de volta à vida de brinquedos.",
+        "generos": "Animação, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/xVhEI1WCgNCCa5I86AqiwuZoog3.jpg"
+      },
+      {
+        "id": 10895,
+        "titulo": "Pinóquio",
+        "tipo": "movie",
+        "sinopse": "Gepeto é um carpinteiro solitário que, um dia, resolve fazer um boneco de madeira para lhe fazer companhia. Durante a noite, a Fada Azul dá vida ao boneco, que passa a se chamar Pinóquio. Ansioso para se tornar um menino de verdade, Pinóquio se mete em várias confusões, apesar dos constantes avisos de seu amigo Grilo Falante. O boneco tem uma particularidade: sempre que mente seu nariz cresce. Até o dia em que precisa resgatar seu criador, quando ele fica preso na barriga de uma baleia.",
+        "generos": "Animação, Família, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/rJTpz9LJFmDflvibkY2Y7IFOGua.jpg"
+      },
+      {
+        "id": 973,
+        "titulo": "O Livro do Pooh",
+        "tipo": "tv",
+        "sinopse": "Uma nova versão da Disney das histórias infantis clássicas sobre o Ursinho Pooh e seus amigos. Em vez das versões animadas do passado, esta série é inteiramente feita em formato de marionete",
+        "generos": "animação, infantil, família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/qjQemm3dnafznIJatt3cox75OPP.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788483924975,
+    "usuario_id": "3",
+    "query": "Uma série que mostre a rotina médica, com casos interessantes e exóticos, com foco também na vida e nas relações pessoais dos médicos",
+    "midias_esperadas": [
+      {
+        "id": 1416,
+        "titulo": "Grey's Anatomy",
+        "tipo": "tv",
+        "sinopse": "Os médicos do Grey Sloan Memorial Hospital lidam diariamente com casos e consequências de vida ou morte. É um no outro que eles encontram apoio, conforto, amizade e, às vezes, até mais que amizade... Juntos, eles descobrem o quanto a vida profissional e a pessoal podem ser complicadas e se misturarem no meio do caminho.",
+        "generos": "drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/vrChGRs0DsoCoaeHif8PlZY637Q.jpg"
+      },
+      {
+        "id": 4588,
+        "titulo": "ER: Plantão Médico",
+        "tipo": "tv",
+        "sinopse": "E.R. trata do cotidiano da emergência de um hospital público de Chicago, visto sob a ótica dos médicos e enfermeiros que ali trabalham. Os conflitos profissionais e as histórias dos pacientes atendidos no pronto-socorro misturam-se aos dramas pessoais dos médicos.",
+        "generos": "drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/iTiZNSLY3Yghecg8ejqjbQ3LNoX.jpg"
+      },
+      {
+        "id": 3172,
+        "titulo": "Private Practice",
+        "tipo": "tv",
+        "sinopse": "A cirurgiã Addison Montgomery foge de um triângulo amoroso, deixando para trás amigos e inimigos no Hospital Seattle; Grace em busca de um recomeço na cidade de Los Angeles.",
+        "generos": "drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/6cjr5eZX4Rxd0p1UsDURACcXt2W.jpg"
+      },
+      {
+        "id": 5308,
+        "titulo": "The Clinic",
+        "tipo": "tv",
+        "sinopse": "A série abrange o dia a dia de profissionais que precisam lidar com todos os tipos de situações numa clínica médica.",
+        "generos": "drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/8glgVXVb5olsNzp7cEgd13Fah8A.jpg"
+      },
+      {
+        "id": 1408,
+        "titulo": "Dr. House",
+        "tipo": "tv",
+        "sinopse": "O Dr. Gregory House é um médico genial, mas misantropo e viciado em analgésicos, que lidera uma equipe de diagnóstico em um hospital de Nova Jersey. Com um cinismo implacável e métodos pouco ortodoxos, ele trata os casos médicos mais raros e misteriosos como quebra-cabeças complexos, desafiando todos ao seu redor para chegar à verdade.",
+        "generos": "drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/lW7MvZ4m49IUj2UrUu4z0xVVl81.jpg"
+      },
+      {
+        "id": 4556,
+        "titulo": "Scrubs",
+        "tipo": "tv",
+        "sinopse": "A divertida vida profissional e pessoal de um grupo de residentes que trabalham em um hospital bizarro e convivem com pacientes, colegas e funcionários imprevisíveis.",
+        "generos": "comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/76dabsXy5SpOXDm7a5m8zdprD8Q.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788484362911,
+    "usuario_id": "3",
+    "query": "Uma série documentário com o dia a dia no aeroporto, mostrando as abordagens da polícia federal, da receita e demais agentes no embarque e desembarque dos passageiros, mostrando prisões e apreensões de bagagens",
+    "midias_esperadas": [
+      {
+        "id": 103972,
+        "titulo": "Aeroporto: Área Restrita",
+        "tipo": "tv",
+        "sinopse": "A série invade as áreas restritas do maior aeroporto da América Latina, por meio do trabalho desafiador da Polícia Federal e da Receita Federal na proteção da porta de entrada e de saída do Brasil para o mundo.",
+        "generos": "documentário",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1Efsj3YA8VDEk3Iai1lkI0ztCdE.jpg"
+      },
+      {
+        "id": 65052,
+        "titulo": "Aeroporto: Estados Unidos",
+        "tipo": "tv",
+        "sinopse": "124 milhões de pessoas entram nos Estados Unidos pelos aeroportos do país a cada ano. É uma onda humana incansável e, escondido entre eles, há um fluxo inesgotável de contrabando e más intenções. Defendendo nossas fronteiras estão os homens e mulheres do Departamento de Segurança Interna dos EUA, cujas agências formam uma defesa de três pontas nos aeroportos americanos. Utilizando todas as ferramentas disponíveis, nada impedirá o DHS de pegar um contrabandista.",
+        "generos": "documentário",
+        "url_capa": "https://image.tmdb.org/t/p/w500/srltefAUWZsKtEF9dgkg4Ssgjsw.jpg"
+      },
+      {
+        "id": 210661,
+        "titulo": "Operação Fronteira Brasil",
+        "tipo": "tv",
+        "sinopse": "Veja o trabalho incansável da Polícia Rodoviária Federal no combate ao contrabando e ao crime organizado. Em um país de dimensão continental, acompanhamos os desafios dos agentes em defesa das fronteiras, de norte a sul.",
+        "generos": "documentário, reality",
+        "url_capa": "https://image.tmdb.org/t/p/w500/7fnBTqzvpASoHZfFESA6BLDV3qv.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788485327252,
+    "usuario_id": "3",
+    "query": "um filme em que as crianças são enviadas para outra dimensão com a missão de salvar o mundo",
+    "midias_esperadas": [
+      {
+        "id": 14199,
+        "titulo": "As Aventuras de Sharkboy e Lavagirl",
+        "tipo": "movie",
+        "sinopse": "Max (Cayden Boyd) é um solitário garoto de 10 anos, que se perde em seu próprio mundo de fantasia para escapar das confusões diárias decorrentes do contato com seus pais, dos valentões da escola e de férias de verão nem um pouco divertidas. Porém quando Max descobre que os super-heróis que existem em sua imaginação podem ser bem mais reais do que ele imaginava, seu mundo se transforma completamente. Max parte em uma viagem interplanetária rumo ao planeta Baba, onde conhece Sharkboy (Taylor Lautner), um garoto metade tubarão e metade humano que foi criado por tubarões após se perder no mar, e Lavagirl (Taylor Dooley), uma jovem vulcânica que lança chamas e pedras incandescentes.",
+        "generos": "Aventura, Família, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/6WUV2wPCFDX2LRQY5Iv6ElxdDe6.jpg"
+      },
+      {
+        "id": 9488,
+        "titulo": "Pequenos Espiões 2: A Ilha dos Sonhos Perdidos",
+        "tipo": "movie",
+        "sinopse": "Os garotos espiões mais legais do mundo estão de volta em mais uma grande aventura. Desta vez, Carmen e Juni são recrutados para recuperar um dispositivo que ameaça o mundo inteiro. Eles contam com as habilidades de seus pais – e de seus avós espiões – em um show eletrizante de trabalho em família.",
+        "generos": "Ação, Aventura, Comédia, Família, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/okbpLqjaUmtYfLlpnNq1vMuLz1w.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788922068678,
+    "usuario_id": "4",
+    "query": "Filme sobre um menino que ganha super poderes de aranha e lança teias",
+    "midias_esperadas": [
+      {
+        "id": 557,
+        "titulo": "Homem-Aranha",
+        "tipo": "movie",
+        "sinopse": "Peter Parker é um jovem estudioso que vive com seus tios, Ben e May, desde que seus pais faleceram. Peter tem dificuldade em se relacionar com seus colegas, por ser tímido e por eles o considerarem um nerd. Até que, em uma demonstração científica, um acidente inesperado faz com que uma aranha modificada geneticamente pique Peter. A partir de então seu corpo é quimicamente alterado pela picada da aranha.",
+        "generos": "Ação, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/RbZQL5hXmydecu82UHw9ZGyytB.jpg"
+      },
+      {
+        "id": 558,
+        "titulo": "Homem-Aranha 2",
+        "tipo": "movie",
+        "sinopse": "Dois anos se passaram desde que o tranquilo Peter Parker separou-se do grande amor de sua vida, Mary Jane Watson, e decidiu assumir o compromisso e a responsabilidade de seguir sendo o Homem-Aranha. Peter enfrenta novos desafios enquanto aprende a lidar com \"seu dom e sua maldição\", tentando desesperadamente harmonizar suas duas identidades: A do super-herói aracnídeo, o Homem-Aranha, e a do estudante universitário.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/xB05Gyeo2w4RBwt7nZlPkjZzt9X.jpg"
+      },
+      {
+        "id": 559,
+        "titulo": "Homem-Aranha 3",
+        "tipo": "movie",
+        "sinopse": "O relacionamento entre Peter Parker e Mary Jane parece estar dando certo, mas outros problemas começam a surgir. A roupa de Homem-Aranha torna-se preta e acaba controlando Peter, que apesar de aumentar seus poderes, revela o lado obscuro de sua personalidade. Os vilões Venon e Homem-Areia tentam destruir o super-herói.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/5831VrgpYNPEokBwxurLVpQ3twM.jpg"
+      },
+      {
+        "id": 1930,
+        "titulo": "O Espetacular Homem-Aranha",
+        "tipo": "movie",
+        "sinopse": "Peter Parker está tentando saber mais sobre sua origem. Ele encontra uma pasta que pertenceu ao seu pai e quer descobrir por que seus pais desapareceram. Sua busca o leva a Oscorp e ao dr. Curt Connors, que tem como alterego o letal Lagarto.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gxSsFBCFuDhVQMCuIDoZcmHOqlY.jpg"
+      },
+      {
+        "id": 3854,
+        "titulo": "O Espetacular Homem-Aranha",
+        "tipo": "tv",
+        "sinopse": "Esta série recria as façanhas de Peter Parker, um garoto que é picado por uma aranha radioativa e passa a ter superpoderes, tornando-se o Homem-Aranha.",
+        "generos": "ação e aventura, animação, infantil, família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/mtelBDEhr0GliQ2MRPBUmgxiXJY.jpg"
+      },
+      {
+        "id": 1482,
+        "titulo": "Homem-Aranha",
+        "tipo": "tv",
+        "sinopse": "O adolescente de mente científica Peter Parker, depois de ser picado por uma aranha radioativa, desenvolve incrível força e poderes de aranha. Ele decide se tornar um super-herói fantasiado combatente do crime, ao mesmo tempo lidando com seus problemas pessoais e as inseguranças resultantes de ser um adolescente.",
+        "generos": "ação e aventura, animação, infantil",
+        "url_capa": "https://image.tmdb.org/t/p/w500/ia07ao43nETrueoPvVbuRg2lyez.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788922196942,
+    "usuario_id": "4",
+    "query": "Série que se passa num período e que os personagens lutam pelos trono",
+    "midias_esperadas": [
+      {
+        "id": 1399,
+        "titulo": "Game of Thrones",
+        "tipo": "tv",
+        "sinopse": "Em uma terra onde os verões podem durar vários anos e o inverno toda uma vida, sete nobres famílias lutam pelo controle da mítica terra de Westeros, dividida depois de uma guerra. Num cenário que lembra a Europa medieval, reis, rainhas, cavaleiros e renegados usam todos os meios possíveis em um jogo político pela disputa do Trono de Ferro, o símbolo do poder absoluto.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/aqomTRKjNZkmNEeOZnEmWrFTmKU.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788922330215,
+    "usuario_id": "4",
+    "query": "Série que se passa em um escritório de uma empresa de papel",
+    "midias_esperadas": [
+      {
+        "id": 2316,
+        "titulo": "The Office",
+        "tipo": "tv",
+        "sinopse": "Michael Scott é o egocêntrico, insensível e incompetente gerente regional de uma subsidiária da Dunder Mifflin Paper Company. Michael acredita ser o cara mais engraçado do escritório, uma fonte de sabedoria para negócios e o melhor amigo de seus funcionários. Ele nem desconfia que a sua equipe o tolera apenas pelo fato dele assinar o contracheque deles. Sem saber o que os seus funcionários pensam a seu respeito, Michael acaba sempre alternando decisões absurdas ou patéticas, mas sempre hilárias.",
+        "generos": "comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/e7BoS8uUnew9ioS6reqtK9matqy.jpg"
+      },
+      {
+        "id": 2996,
+        "titulo": "The Office",
+        "tipo": "tv",
+        "sinopse": "Uma comédia inglesa criada e dirigida por Ricky Gervais e Stephen Merchant narrando o dia-a-dia da vida dos empregados de um escritório em Slough, Berkshire, na fictícia fábrica de papel chamada Wherham Hogg Paper Company. Embora fictícia, o programa tem a forma de um documentário, com a presença de câmeras que são frequentemente mostradas.",
+        "generos": "comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/oX2JKE1RzAONMbYlujHx0hRAJo1.jpg"
+      },
+      {
+        "id": 5068,
+        "titulo": "Os Aspones",
+        "tipo": "tv",
+        "sinopse": "Moira, Anete e Caio são funcionários de uma repartição pública e não fazem nada no escritório, que acabou perdendo a atenção do governo com o passar dos anos. Tales é nomeado novo chefe e, com sua estagiária Leda, fazem os antigos funcionários sofrerem com novos e muitos trabalhos para fazer.",
+        "generos": "comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/8uEEIUJIVlzdoYo0pGXJUsKpUT7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788952821467,
+    "usuario_id": "1",
+    "query": "Jurassic Park",
+    "midias_esperadas": [
+        {
+        "id": 329,
+        "titulo": "Jurassic Park: O Parque dos Dinossauros",
+        "tipo": "movie",
+        "sinopse": "Um parque construído por um milionário tem dinossauros diversos como habitantes, extintos a sessenta e cinco milhões de anos. Isto é possível por ter sido encontrado um inseto fossilizado, que tinha sugado sangue destes dinossauros, de onde pôde-se isolar o DNA, o código químico da vida e, a partir deste ponto, recriá-los em laboratório. Mas, o que parecia ser um sonho se torna um pesadelo, quando a experiência sai do controle de seus criadores.",
+        "generos": "Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/mgjJ7FH4V3exsmoHwXrmsUhn0h1.jpg"
+      },
+      {
+        "id": 330,
+        "titulo": "O Mundo Perdido: Jurassic Park",
+        "tipo": "movie",
+        "sinopse": "Quatro anos após o terrível fiasco de seu Jurassic Park, o multimilionário John Hammond chama o Dr. Ian Malcolm de volta e o choca ao lhe revelar que, em uma ilha deserta próxima ao antigo parque, centenas de dinossauros de todos os tamanhos e espécies vagam livremente. Inicialmente relutante, Ian decide se juntar a uma expedição científica para documentar o comportamento natural dos animais, juntamente com sua namorada paleontóloga Sarah Harding, o documentarista Nick Van Owen e o especialista em tecnologia Eddie Carr.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gkF6JPfru2FEIP9du7QyHVLSOzu.jpg"
+      },
+    
+      {
+        "id": 331,
+        "titulo": "Jurassic Park 3",
+        "tipo": "movie",
+        "sinopse": "Precisando de fundos para pesquisas, o Dr. Alan Grant aceita uma grande quantia em dinheiro para acompanhar Paul e Amanda Kirby em um passeio aéreo pela infame Isla Sorna. Não demora muito para que o inferno comece e os viajantes encalhados tenham que lutar pela sobrevivência enquanto uma série de novos - e ainda mais mortais - dinossauros tentam fazer lanches com eles.",
+        "generos": "Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1dObEUGvS4cTbVNi8ewvd6gLIv4.jpg"
+      },
+      {
+        "id": 788,
+        "titulo": "Prehistoric Park",
+        "tipo": "tv",
+        "sinopse": "Usando seu conhecimento do reino animal atual e as pesquisas mais recentes, o aventureiro da vida selvagem Nigel Marven usa um portal do tempo para levá-lo ao passado, em uma missão para resgatar criaturas pré-históricas há muito perdidas.",
+        "generos": "ação e aventura, família, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/dKTzN99UMHCZIgH8otfSr5gzz9V.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1788952949492,
+    "usuario_id": "1",
+    "query": "Harry Potter",
+    "midias_esperadas": [
+      {
+        "id": 671,
+        "titulo": "Harry Potter e a Pedra Filosofal",
+        "tipo": "movie",
+        "sinopse": "Harry Potter é um garoto órfão que vive infeliz com seus tios, os Dursley. Em seu aniversário de 11 anos ele recebe uma carta que mudará sua vida: um convite para ingressar em Hogwarts, uma Escola de Magia e Bruxaria.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/4rtsbE9aQ1qw4gv7yYwaNYfWFoS.jpg"
+      },
+      {
+        "id": 672,
+        "titulo": "Harry Potter e a Câmara Secreta",
+        "tipo": "movie",
+        "sinopse": "De férias na casa de seus tios, Harry Potter recebe a visita de Dobby, um elfo doméstico, que veio avisá-lo para não retornar à Escola de Magia e Bruxaria de Hogwarts, pois lá correrá um grande perigo. Harry não lhe dá ouvidos e decide retornar aos estudos, enfrentando um segundo ano recheado de novidades. Uma delas é a contratação de um novo professor, Gilderoy Lockhart, um grande galã que não perde uma oportunidade de fazer marketing pessoal. Porém, o aviso de Dobby se confirma e logo toda Hogwarts está envolvida em um mistério que resulta no aparecimento de alunos petrificados.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/811j0Jf2D0mK1U6RxXJoZgOB29n.jpg"
+      },
+      {
+        "id": 674,
+        "titulo": "Harry Potter e o Cálice de Fogo",
+        "tipo": "movie",
+        "sinopse": "Em seu 4º ano na Escola de Magia e Bruxaria de Hogwards, Harry Potter é misteriosamente selecionado para participar do Torneio Tribruxo, uma competição internacional em que precisará enfrentar alunos mais velhos e experientes de Hogwards e também de outras escolas de magia. Além disso a aparição da marca negra de Voldemort ao término da Copa Mundial de Quadribol põe a comunidade de bruxos em pânico, já que sinaliza que o temido bruxo está prestes a retornar.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/5oWB3hjzyECRBAjgWkmZinxl9qA.jpg"
+      },
+      {
+        "id": 12444,
+        "titulo": "Harry Potter e as Relíquias da Morte - Parte 1",
+        "tipo": "movie",
+        "sinopse": "Harry, Ron e Hermione estão determinados em sua missão de descobrir e acabar com o segredo da imortalidade e do poder de destruição de Voldemort – os Horcruxes. Fugitivos e sozinhos, os três amigos devem apenas contar uns com os outros, agora mas do que nunca... Mas as Forças das Trevas no caminho ameaçam separá-los para sempre.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/67FVFOTaeBUQnimhCWpUkDawDct.jpg"
+      },
+      {
+        "id": 767,
+        "titulo": "Harry Potter e o Enigma do Príncipe",
+        "tipo": "movie",
+        "sinopse": "À medida que Lord Voldemort aumenta seu controle sobre o mundo Trouxa e bruxo, Hogwarts não é mais um local seguro. Harry suspeita que haja perigos dentro do castelo, mas Dumbledore está mais empenhado em prepará-lo para a batalha final que se aproxima rapidamente. Juntos, eles trabalham para encontrar a chave para desbloquear as defesas de Voldemort e, para esse fim, Dumbledore recruta seu velho amigo e colega Horácio Slughorn, que ele acredita possuir informações cruciais. Mesmo quando o confronto decisivo se aproxima, o romance floresce para Harry, Ron, Hermione e seus colegas de classe. O amor está no ar, mas o perigo está por vir e Hogwarts pode nunca mais ser a mesma.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/hTQQ5l9mxA3Rob8PTyvrNNGuj6y.jpg"
+      },
+      {
+        "id": 673,
+        "titulo": "Harry Potter e o Prisioneiro de Azkaban",
+        "tipo": "movie",
+        "sinopse": "É o início do terceiro ano na escola de magia e bruxaria de Hogwarts. Harry, Ron e Hermione têm muito o que aprender. Mas uma ameaça ronda a escola e ela se chama Sirius Black. Após doze anos encarcerado na prisão de Azkaban, ele consegue escapar e volta para vingar seu mestre, Lord Voldemort. Para piorar, os Dementores, guardas supostamente enviados para proteger Hogwarts e seguir os passos de Black, parecem ser ameaças ainda mais perigosas.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1HdMUghqlgOIvbsU9ZtO40IPRzl.jpg"
+      },
+      {
+        "id": 675,
+        "titulo": "Harry Potter e a Ordem da Fênix",
+        "tipo": "movie",
+        "sinopse": "Lord Voldemort está de volta, mas o Ministério da Magia está fazendo tudo a seu alcance para impedir que a comunidade mundial de bruxos descubra isso – incluindo indicar a oficial do Ministério, Dolores Umbridge, como a nova professora de Defesa Contra as Artes das Trevas de Hogwarts. Quando Umbridge se recusa a ensinar a prática de mágica defensiva, Rony e Hermione convencem Harry a secretamente treinar um grupo de estudantes para a guerra de magia que está prestes a estourar.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/tIf9aUyNljda9MG1pjlOLHCZ3b0.jpg"
+      },
+      {
+        "id": 12445,
+        "titulo": "Harry Potter e as Relíquias da Morte - Parte 2",
+        "tipo": "movie",
+        "sinopse": "No final épico, a batalha entre as forças do bem e do mal no mundo da bruxaria toma proporções de uma guerra mundial. As apostas nunca foram tão altas e ninguém está a salvo. Mas é harry que pode ser convocado para fazer um derradeiro sacrifício, à medida que ele se aproxima cada vez mais do confronto final com Lorde Voldemort. Tudo termina aqui.",
+        "generos": "Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/yD3VosOVW8WxPUzBDpEdzfv5pGx.jpg"
+      }
+    ]
+  }
+]

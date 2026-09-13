@@ -31,6 +31,9 @@ app.add_middleware(
         "http://127.0.0.1:5174",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
+        "https://192.168.1.104:5173",
+        "http://192.168.1.104:5174",
+        
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -199,7 +202,7 @@ def recomendar_midias(
                             (
                                 COALESCE(bs.score_semantico, 0) * %s + 
                                 COALESCE(bt.raw_textual / NULLIF((SELECT max_rank FROM max_textual), 0), 0) * %s + 
-                                COALESCE(pc.score_colaborativo, 0.6) * %s
+                                COALESCE(pc.score_colaborativo, 0.0) * %s
                             )::numeric, 4
                         )::float AS score_final
                     FROM midias m
