@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+DEPLOY_ONLINE.md
+migrar_para_supabase.py
+dump_dados.sql

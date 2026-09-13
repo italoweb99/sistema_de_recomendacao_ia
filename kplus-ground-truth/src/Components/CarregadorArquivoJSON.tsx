@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef,type ChangeEvent, type FormEvent } from 'react';
-import type { Midia, CasoDeTeste, RecomendacaoResultado, Metricas } from './types.tsx'
+import { useState, useEffect, useRef, type ChangeEvent, type FormEvent } from 'react';
+import type { Midia, CasoDeTeste, RecomendacaoResultado, Metricas } from './types.tsx';
 
 const STORAGE_KEY = 'gabaritos_recomendador_v1';
 

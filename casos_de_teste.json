@@ -418,7 +418,7 @@
     "usuario_id": "1",
     "query": "Jurassic Park",
     "midias_esperadas": [
-        {
+      {
         "id": 329,
         "titulo": "Jurassic Park: O Parque dos Dinossauros",
         "tipo": "movie",
@@ -434,7 +434,6 @@
         "generos": "Ação, Aventura, Ficção científica",
         "url_capa": "https://image.tmdb.org/t/p/w500/gkF6JPfru2FEIP9du7QyHVLSOzu.jpg"
       },
-    
       {
         "id": 331,
         "titulo": "Jurassic Park 3",
@@ -521,6 +520,728 @@
         "sinopse": "No final épico, a batalha entre as forças do bem e do mal no mundo da bruxaria toma proporções de uma guerra mundial. As apostas nunca foram tão altas e ninguém está a salvo. Mas é harry que pode ser convocado para fazer um derradeiro sacrifício, à medida que ele se aproxima cada vez mais do confronto final com Lorde Voldemort. Tudo termina aqui.",
         "generos": "Aventura, Fantasia",
         "url_capa": "https://image.tmdb.org/t/p/w500/yD3VosOVW8WxPUzBDpEdzfv5pGx.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789261555025,
+    "usuario_id": "5",
+    "query": "filme de familia sobre adoção camundongo",
+    "midias_esperadas": [
+      {
+        "id": 10137,
+        "titulo": "O Pequeno Stuart Little",
+        "tipo": "movie",
+        "sinopse": "Divirta-se com a família Little, que adota Stuart, um adorável e falante garotinho que se parece muito com um rato. O Sr. e a Sra. Little se apaixonam por Stuart na hora, mas seu filho mais velho George não está muito certo do que fazer com seu novo irmão, e o gato da família, Snowbell, arquiteta um plano mesquinho para pôr Stuart fora de casa... para sempre.",
+        "generos": "Aventura, Comédia, Família, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/oRaBrLCeOPv96RDuAoA0Tjf1bH1.jpg"
+      },
+      {
+        "id": 10996,
+        "titulo": "O Pequeno Stuart Little 2",
+        "tipo": "movie",
+        "sinopse": "Enquanto George, o filho da família Little, cresce e faz novas amizades na escola, Stuart se dá conta de que ele também precisa de suas próprias amizades. Rapidamente, conhece Margalo a quem salva das garras do malvado Falcon em um ato heróico. Quando finalmente Falcon consegue capturar Margalo, Stuart entra novamente em ação. Nesta aventura, consegue a ajuda de Snowbell nesta missão de resgate. Será que conseguirão chegar a tempo de salvar Margalo?",
+        "generos": "Aventura, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/5JEDi0zjtJeLSL0IQb3H0MMbCCI.jpg"
+      },
+      {
+        "id": 4190,
+        "titulo": "Pinky, Felícia e o Cérebro",
+        "tipo": "tv",
+        "sinopse": "Depois do Laboratório Acme ser destruído por umas das experiências de Cérebro, ele (Cérebro) e Pinky decidem ir embora. Os dois ficam sozinhos nas ruas e vão parar numa loja de animais. Felícia, a mesma personagem do desenho Tiny Toon, aparece na loja e os leva para sua casa (Felícia comprou uma tartaruga, e ganhou Pinky e Cérebro de brinde). Em sua casa, Felícia \"cuida\" de Pinky e Cérebro (os apertando até sufocarem, ou os usando como brinquedos). Cérebro continua tramando seus planos para tentar conquistar o mundo mas agora, além de Pinky, ele também tem Felícia para atrapalhá-lo.",
+        "generos": "animação, comédia, infantil, família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/2oxKhxwIBpTK4GBBe6eZp8c9IuC.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789261987185,
+    "usuario_id": "5",
+    "query": "vida no mar",
+    "midias_esperadas": [
+      {
+        "id": 10555,
+        "titulo": "O Espanta Tubarões",
+        "tipo": "movie",
+        "sinopse": "Oscar é um pequeno peixe que tem sonhos grandes, que se torna um herói involuntário após pregar uma grande mentira. Após ser perseguido pelo filho do tubarão-chefe, Oscar presencia sua morte. Querendo bancar o herói, ele assume a autoria do assassinato e, com isso, se torna uma grande celebridade no mundo aquático. Porém a situação se complica quando ele é designado para repetir a façanha, eliminando outros tubarões.",
+        "generos": "Ação, Animação, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1tPhFqGScPYbaLuczBnlFGjNUqj.jpg"
+      },
+      {
+        "id": 9408,
+        "titulo": "Tá Dando Onda",
+        "tipo": "movie",
+        "sinopse": "Cadu Maverick (Shia LaBeouf) é um jovem pinguim, que tem o lendário surfista Big Z como ídolo. Um dia ele decide deixar sua família e sua cidade, Shiverpool, na Antártida, para participar do Big Z Memorial Surf Off, um torneio de surf realizado na ilha Pen-Gu. Cadu acredita que caso vença o torneio ganhará respeito e admiração, seu grande sonho. Mas lá ele conhece um veterano surfista chamado Grego (Jeff Bridges), com quem aprende que o campeão nem sempre é aquele que chega em 1º lugar nas competições.",
+        "generos": "Animação, Comédia, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/edR3BjwAwUGHtOQMXJTWRfMYBvt.jpg"
+      },
+      {
+        "id": 12,
+        "titulo": "Procurando Nemo",
+        "tipo": "movie",
+        "sinopse": "Nemo, um jovem peixe-palhaço aventureiro, é inesperadamente levado de sua casa na Grande Barreira de Corais para o aquário do consultório de um dentista. Cabe ao seu preocupado pai Marlin e à simpática mas esquecida peixe Dory trazer Nemo para casa - encontrando tubarões vegetarianos, tartarugas surfistas, medusas hipnóticas, gaivotas esfomeadas e muito mais pelo caminho.",
+        "generos": "Animação, Aventura, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/djbivExXSZb0sTO8uYaaQC5vMRM.jpg"
+      },
+      {
+        "id": 285,
+        "titulo": "Piratas do Caribe: No Fim do Mundo",
+        "tipo": "movie",
+        "sinopse": "Will Turner e Elizabeth Swann unem forças com o Capitão Barbossa para libertarem Jack Sparrow da prisão de Davy Jones. Enquanto isso, a tripulação do barco fantasma O Holandês Voador causa estragos nos Sete Mares. Os amigos devem navegar através de águas perigosas para enfrentarem o pirata chinês São Feng e, finalmente, eles devem escolher em que lado ficar na batalha, pois a vida do pirata está em jogo.",
+        "generos": "Ação, Aventura, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/j15lZasREutscon6e61LSSNJoN7.jpg"
+      },
+      {
+        "id": 12609,
+        "titulo": "Mamãe, Virei Um Peixe!",
+        "tipo": "movie",
+        "sinopse": "Fly, Stella e Chuck encontram o laboratório do Professor MacKrill, que está desenvolvendo uma poção que transforma humanos em peixes. Após ingeri-lá acidentalmente, Stella se torna uma estrela do mar e vai parar no oceano. Para resgatá-la, Fly e Chuck também tomam a bebida. Agora, eles terão apenas 48 horas para encontrá-la e beber o antítodo, que os transformará de volta.",
+        "generos": "Animação, Aventura, Comédia, Drama, Família",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gHLKVcEcqIazjqoE20Hgyl2zS5S.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789262191910,
+    "usuario_id": "5",
+    "query": "dragao domado",
+    "midias_esperadas": [
+      {
+        "id": 10191,
+        "titulo": "Como Treinar o Seu Dragão",
+        "tipo": "movie",
+        "sinopse": "Soluço é um jovem viking que desafia a tradição, quando fica amigo de um dos mais mortais inimigos — um feroz dragão que ele chama de Banguela.",
+        "generos": "Animação, Aventura, Família, Fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/spZbO7Ss6U9W5zSHjtH6FvXvCF7.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789263016606,
+    "usuario_id": "6",
+    "query": "comedia sobre amigos que saem em uma viagem inusitada a procura de uma jovem",
+    "midias_esperadas": [
+      {
+        "id": 8467,
+        "titulo": "Debi & Lóide: Dois Idiotas em Apuros",
+        "tipo": "movie",
+        "sinopse": "Dois amigos debilóides vão para Aspen, no estado do Colorado, para tentar devolver uma maleta esquecida pela passageira da limusine que um deles estava dirigindo para o aeroporto. Sem saber que na mala havia uma quantia enorme de dinheiro, que serviria para pagar o resgate de um sequestro, os dois acabam sendo perseguidos pela polícia e por assassinos profissionais.",
+        "generos": "Comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/3pJwSxO8L2MOGXGaJIOAAq35LAP.jpg"
+      },
+      {
+        "id": 10152,
+        "titulo": "Debi & Lóide 2: Quando Debi Conheceu Lóide",
+        "tipo": "movie",
+        "sinopse": "Após anos recebendo educação em casa, o não exatamente brilhante adolescente Harry Dunne finalmente entra para a escola pública e conhece outro aluno com dificuldades de aprendizado, Lloyd Christmas. A dupla acaba em uma classe para estudantes com necessidades especiais, criada pelo diretor Collins para tirar dinheiro dos pais e bancar seu apartamento no Havaí. A falcatrua é descoberta pela aluna Jessica, que pede ajuda a Harry e Lloyd para desmascarar Collins.",
+        "generos": "Comédia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/uKywKtYyIDTaQ4jD1TKTe1q6Fsl.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789263695721,
+    "usuario_id": "6",
+    "query": "serie de guerra entre mundos diferentes",
+    "midias_esperadas": [
+      {
+        "id": 77236,
+        "titulo": "A Descoberta das Bruxas",
+        "tipo": "tv",
+        "sinopse": "Diana Bishop, historiadora e bruxa, embarca em uma jornada mágica após descobrir um manuscrito em Oxford. Para proteger o livro, ela conta com a ajuda de um vampiro misterioso.",
+        "generos": "sci-fi & fantasy, drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/vCPIAUuxcPBgBBBdDz7rzfLelMD.jpg"
+      },
+      {
+        "id": 74,
+        "titulo": "Guerra dos Mundos",
+        "tipo": "movie",
+        "sinopse": "Ray Ferrier é um estivador divorciado, afastado de seus filhos, que vivem com a mãe. Quando sua ex-esposa deixa as crianças para ele cuidar durante alguns dias, o planeta é atacado por alienígenas que surgem do chão conduzindo tripods e destruindo tudo que encontram pelo caminho. Ray tenta proteger os seus filhos e fugir para Boston para se juntar a sua ex-esposa. Durante o trajeto, enfrenta várias adversidades e ataques.",
+        "generos": "Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/aU42RNFpLgXsg0Tsgo8g8RPji0N.jpg"
+      },
+      {
+        "id": 8974,
+        "titulo": "Guerra dos Mundos",
+        "tipo": "movie",
+        "sinopse": "Os cientistas Clayton Forrester e Sylvia Van Buren são os primeiros a chegar no local onde caiu um meteorito. Logo depois, uma máquina alienígena aparece e começa uma matança aleatória. Fuzileiros navais são enviados para o local, porém as forças de ataque deles não está a altura da força de ataque dos alienígenas.",
+        "generos": "Ação, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/3WbV9FrscqOCo7eKkUFReD8e7HV.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789264003513,
+    "usuario_id": "6",
+    "query": "um transportador que se depara com carga misteriosa",
+    "midias_esperadas": [
+      {
+        "id": 4108,
+        "titulo": "Carga Explosiva",
+        "tipo": "movie",
+        "sinopse": "O ex-operador das Forças Especiais Frank Martin vive o que parece ser uma vida tranquila ao longo do Mediterrâneo francês. Na verdade ele é um transportador mercenário levando bens, humanos ou não, de um lugar para outro, sem fazer perguntas sobre que tipo de mercadoria foi contratado para transportar.",
+        "generos": "Ação, Crime, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/iajTcyco5MEscLp0ue59lVY2WtH.jpg"
+      },
+      {
+        "id": 9335,
+        "titulo": "Carga Explosiva 2",
+        "tipo": "movie",
+        "sinopse": "Frank Martin é um ex-agente das Forças Especiais que trabalha atualmente como transportador de itens valiosos. Frank atualmente trabalha para a poderosa família Billings, como favor a um amigo. Aos poucos ele fica próximo ao pequeno Jack Billings, de 6 anos, a quem leva e traz da escola. Quando Jack é sequestrado Frank é obrigado a mais uma vez pôr suas habilidades em ação, partindo em uma tentativa de resgate.",
+        "generos": "Ação, Crime, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/4Vo1KYTe0LWakRxTwp3scw8Ti6u.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789264301497,
+    "usuario_id": "6",
+    "query": "robos que refugiados de guerra que se transformam em carro",
+    "midias_esperadas": [
+      {
+        "id": 1858,
+        "titulo": "Transformers",
+        "tipo": "movie",
+        "sinopse": "O destino da humanidade está em jogo quando duas raças de robôs, os Autobots e os vilões Decepticons, chegam à Terra. Os robôs possuem a capacidade de se transformarem em diferentes objetos mecânicos enquanto buscam a chave do poder supremo com a ajuda do jovem Sam.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/lkZ9gqCEjzX85lKR6Jjd1uGAXNp.jpg"
+      },
+      {
+        "id": 8373,
+        "titulo": "Transformers: A Vingança dos Derrotados",
+        "tipo": "movie",
+        "sinopse": "Passaram-se dois anos desde que Sam Witwicky e os Autobots salvaram a raça humana e tentam ter uma vida normal: Sam está começando a faculdade, enquanto os Autobots trabalham com uma organização militar secreta e tentam construir uma casa para eles na Terra. Porém, um antigo Decepticon conhecido como 'The Fallen' aparece para se vingar, então Sam e sua namorada Mikaela precisam desvendar a história dos Transformes e achar um caminho para derrotá-lo.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/xggdkMUwiY4zwlSXbp7AqPxAvQt.jpg"
+      },
+      {
+        "id": 982,
+        "titulo": "Transformers: Armada",
+        "tipo": "tv",
+        "sinopse": "Crianças da Terra se veem envolvidas em um conflito entre duas facções de Transformers.",
+        "generos": "ação e aventura, animação, infantil, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/eUEQT6mFi8OpLaVdA3as6l6VYxf.jpg"
+      },
+      {
+        "id": 4269,
+        "titulo": "Transformers",
+        "tipo": "tv",
+        "sinopse": "The Transformers é a primeira série de televisão animada da franquia Transformers. A série retrata uma guerra entre robôs gigantes que podem se transformar em veículos e outros objetos. Escrita e gravada na América, a série foi animada no Japão e na Coréia do Sul. A série inteira foi baseada nas linhas de brinquedos Diaclone e Microman, originalmente criadas pela fabricante de brinquedos japonesa Takara, que foram desenvolvidas na linha de brinquedos Transformers pela empresa americana Hasbro. A série foi complementada por um longa-metragem, The Transformers: The Movie, ocorrendo entre a segunda e a terceira temporadas. No Japão, a série se chamava Fight! Transformers Super Robot Life para as temporadas 1 e 2, e Transformers 2010 para a terceira temporada. Após a conclusão da série em 1987, os japoneses criaram Transformers: The Headmasters, uma série de sequências.",
+        "generos": "ação e aventura, animação, infantil, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/h4DvodvcLWh7xdpj872Bq0V2DKS.jpg"
+      },
+      {
+        "id": 11841,
+        "titulo": "Transformers: Super-God Masterforce",
+        "tipo": "tv",
+        "sinopse": "O conceito central do Masterforce começa com os próprios seres humanos se levantando para lutar e defender sua casa, em vez dos Transformers alienígenas fazendo isso por eles. Indo de mãos dadas com essa idéia, as encarnações japonesas dos Autobot Pretenders na verdade se encolhem para passar por seres humanos normais, cujas emoções e forças eles valorizam e desejam salvaguardar. Os Decepticon Pretenders tendem a continuar sendo grandes monstros, a menos que batalhem em suas formas de robô.",
+        "generos": "animação, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/9FZN0h7GIxZbaKRZ2b6tMqIsacp.jpg"
+      },
+      {
+        "id": 10548,
+        "titulo": "Transformers",
+        "tipo": "tv",
+        "sinopse": "Os malignos Decepticons apareceram em Detroit. Com o todo-poderoso Allspark, Megatron pode usá-lo para transformar todos os robôs da Terra em Decepticons. No entanto, Optimus Prime e seus Autobots chegam e planejam impedir Megatron e seu plano maligno em Transformers Animated.",
+        "generos": "ação e aventura, animação, infantil, família, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/kZkn34WF6AIYlPP2w1iR6g0gcIZ.jpg"
+      },
+      {
+        "id": 1857,
+        "titulo": "Transformers - O Filme",
+        "tipo": "movie",
+        "sinopse": "Em pleno ano 2005, os Autobots e os Decepticons ainda estão em guerra, mas uma mortífera nova força está prestes a ameaçá-los. O gigantesco planeta assassino Unicron se aproxima cada vez mais da Terra e pretende destruí-la. Com isso, os heróicos Autobots resolvem lutar por sua própria sobrevivência e enfrentar a mais nova ameaça ao planeta.",
+        "generos": "Ação, Animação, Aventura, Família, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/aslDKZTS15jWfOjwlzUq6tSvVN.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789264544949,
+    "usuario_id": "6",
+    "query": "filme de espião",
+    "midias_esperadas": [
+      {
+        "id": 2501,
+        "titulo": "A Identidade Bourne",
+        "tipo": "movie",
+        "sinopse": "Um homem sem memória é resgatado do oceano por um barco de pesca. Sobre si, ele só sabe que tem talento para matar e um chip implantado no quadril. Enquanto busca sua história, tenta escapar de pessoas que, inexplicavelmente, querem matá-lo.",
+        "generos": "Ação, Mistério, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/q18OhXWdS0WncHminNK7A7uiEvc.jpg"
+      },
+      {
+        "id": 2503,
+        "titulo": "O Ultimato Bourne",
+        "tipo": "movie",
+        "sinopse": "Procurado pela CIA, o assassino Jason Bourne viaja pelo mundo tentando reconstruir o próprio passado e descobrir a verdadeira identidade.",
+        "generos": "Ação, Drama, Mistério, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/cCmkrXF2CL9rx9BnQHDGDhQv4pD.jpg"
+      },
+      {
+        "id": 2502,
+        "titulo": "A Supremacia Bourne",
+        "tipo": "movie",
+        "sinopse": "Jason Bourne está vivendo na Índia quando é enquadrado por um agente russo, Kirill, pelo roubo de milhões da CIA. Kirill começa a perseguir Bourne com a intenção de assassiná-lo, mas, por engano, mata a namorada de Bourne, Marie. Jurando vingança, Bourne se propõe a provar sua inocência e trazer os culpados à justiça.",
+        "generos": "Ação, Drama, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/zasdli6k1b2JwbYHMK7lGsys5zA.jpg"
+      },
+      {
+        "id": 708,
+        "titulo": "007: Marcado para a Morte",
+        "tipo": "movie",
+        "sinopse": "Georgi Koskov, um general dissidente da União Soviética, escapa da Cortina de Ferro com a ajuda de James Bond, mas logo é recapturado através de uma sensacional missão de resgate, que transforma o Serviço Secreto Inglês em uma grande chacota. A partir de então, 007 assume o caso e vê fatos surpreendentes ao conhecer Kara Milovy, uma violoncelista tcheca com quem se envolve. Bond acaba descobrindo uma grande trama ligada a Brad Whitaker, um grande comerciante de armamento bélico.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1iJT2efOyOsOTXOqlWrfhKsKEoe.jpg"
+      },
+      {
+        "id": 682,
+        "titulo": "007 Contra o Homem com a Pistola de Ouro",
+        "tipo": "movie",
+        "sinopse": "Quando uma bala de ouro chega ao quartel-general da inteligência britânica com um \"007\" gravado nela, se acredita que James Bond será o próximo alvo de um assassino profissional que cobra um milhão de dólares por serviço. Assim, Bond vai investigar a situação e acaba descobrindo que o objetivo do matador internacional seqüestrar um cientista, que inventou um conversor solar capaz de resolver a crise de energia no planeta.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/c9vcB3ddnErwY9H9H5lNez8a0kr.jpg"
+      },
+      {
+        "id": 700,
+        "titulo": "007 Contra Octopussy",
+        "tipo": "movie",
+        "sinopse": "Ao tentar solucionar quem assassinou o agente 009 (Andy Bradford), James Bond (Roger Moore) resolve seguir uma pista de uma jóia Fabergé roubada do Kremlin, que aparece em uma famosa casa de leilões de Londres. O agente 007 acredita que esta jóia pode ser a chave para solucionar o mistério, pois o agente morto foi encontrado com um Fabergé falso.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/orK0ZbPR6teSzBH2ZsWlVY4m5GL.jpg"
+      },
+      {
+        "id": 681,
+        "titulo": "007: Os Diamantes São Eternos",
+        "tipo": "movie",
+        "sinopse": "Quando o governo britânico suspeita da existência de uma rede mundial de contrabando de diamantes, 007 (Sean Connery) é chamado para investigar. Ele logo descobre a extensão do problema e viaja para a América, onde o milionário proprietário de um cassino é suspeito de estar por trás de tudo. Só que ele é ninguém menos que Ernst Stavro Blofeld (Charles Gray), o arquiinimigo de James Bond, que sabe exatamente o que tem de fazer, principalmente quando as mais poderosas potências nucleares do planeta estão envolvidas.",
+        "generos": "Ação, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/2KaF1sNqfbli0sEigocClvdb3Ez.jpg"
+      },
+      {
+        "id": 691,
+        "titulo": "007: O Espião Que Me Amava",
+        "tipo": "movie",
+        "sinopse": "A Inglaterra descobre que alguém sabe como rastrear um submarino submerso e está oferecendo esta tecnologia para quem pagar mais alto. Uma crise internacional tem início quando um submarino com dezesseis mísseis nucleares desaparece, enquanto fazia uma patrulha. O agente secreto 007 (Roger Moore) é incumbido de investigar o caso e recuperar as ogivas antes que sejam disparadas e, para isto, recebe a ajuda de uma bela e sensual agente soviética (Barbara Bach).",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/6kKHtGOpyrVNScUdV6IS53dj1Qm.jpg"
+      },
+      {
+        "id": 660,
+        "titulo": "007 Contra a Chantagem Atômica",
+        "tipo": "movie",
+        "sinopse": "James Bond tenta evitar a destruição de Miami por meio de uma super bomba, roubada pela SPECTRE. A organização está exigindo um pagamento de 100 milhões de dólares em diamantes para não cumprir a ameaça de explodir a cidade. Para isso, ele vai correr contra o tempo para encontrar as armas roubadas e impedir a morte de milhões de inocentes.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/u5hkEerfpDx0eqk3braCh0eVuDT.jpg"
+      },
+      {
+        "id": 714,
+        "titulo": "007: O Amanhã Nunca Morre",
+        "tipo": "movie",
+        "sinopse": "James Bond descobre que o magnata da mídia Elliot Carver colocou em prática um plano para manipular as superpotências e expandir seus negócios. O agente deve impedir que essa ideia doentia provoque uma nova guerra mundial.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/pnf6jFUrCsdVURIT1nsq2DqMNFv.jpg"
+      },
+      {
+        "id": 668,
+        "titulo": "007: A Serviço Secreto de Sua Majestade",
+        "tipo": "movie",
+        "sinopse": "Em uma praia, James Bond (George Lazenby) evita que uma jovem mulher cometa suicídio. O pai dela é o chefe de uma poderosa organização criminosa e, impressionado com Bond, quer que ele proteja sua filha se casando com ela. Em troca, ele oferece ao famoso agente informações que o façam chegar até Ernst Blofeld (Telly Savallas), o principal inimigo do agente. Inicialmente, James Bond concorda com o acordo, visando apenas poder matar Blofeld, mas com o tempo ele realmente fica apaixonado pela sua futura esposa. Porém, James Bond logo descobre que Blofeld planeja destruir a humanidade com um vírus altamente mortal a menos que receba perdão por todos os seus crimes. Desta maneira, a Rainha da Inglaterra pede que o agente secreto mais famoso do mundo intervenha no caso, mas a situação se complica e toma um rumo inesperado.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/kIWHlj117qS4lutRo77xqOXJucF.jpg"
+      },
+      {
+        "id": 698,
+        "titulo": "007 Contra o Foguete da Morte",
+        "tipo": "movie",
+        "sinopse": "Um avião carregando um foguete espacial sofre um acidente. Mas quando o Serviço Secreto Britânico vai examinar os destroços, não encontra nenhum vestígio da espaçonave. Assim, James Bond (Roger Moore) tem a missão de investigar o caso e começa indo visitar o multimilionário que construiu a aeronave e tem idéias bastantes estranhas de qual deva ser o destino da raça humana.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/hMpBcacn9Au7xfbZtqUpkA0WW2h.jpg"
+      },
+      {
+        "id": 253,
+        "titulo": "Com 007 Viva e Deixe Morrer",
+        "tipo": "movie",
+        "sinopse": "O tráfico de heroína e a morte de agentes secretos colocam frente a frente James Bond (Roger Moore) e Mr. Big (Yaphet Kotto), o chefão do crime em Nova York. Sua organização age impulsionada pelas visões de Solitaire (Jane Seymour), uma cartomante com poderes especiais. Quando conhece Bond, Solitaire perde os seus poderes e é condenada a morte em um ritual vudu.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/369sgmDqHI6oUhMCDgOf78uNrYX.jpg"
+      },
+      {
+        "id": 657,
+        "titulo": "Moscou Contra 007",
+        "tipo": "movie",
+        "sinopse": "James Bond é incumbido de ajudar uma bela agente soviética a fugir de seu país para então tentar recuperar uma leitora de códigos na embaixada russa, em Londres. Porém, Bond não sabe que a temível organização criminosa Spectre organizou esta armadilha no intuito de executá-lo.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/7w8GOJxGfu8tmFoeoX2RsSg6JZM.jpg"
+      },
+      {
+        "id": 10764,
+        "titulo": "007: Quantum of Solace",
+        "tipo": "movie",
+        "sinopse": "Após a morte de Vesper Lynd, James Bond faz com que sua próxima missão seja pessoal. A caçada àqueles envolvidos na morte da mulher de sua vida o leva ao encontro do cruel empresário Dominic Greene, que faz parte da organização que coagiu Vesper. Bond descobre que Greene planeja obter o controle total de um recurso natural vital e deve enfrentar perigo e traição para frustrar o plano.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/e3DXXLJHGqMx9yYpXsql1XNljmM.jpg"
+      },
+      {
+        "id": 658,
+        "titulo": "007 Contra Goldfinger",
+        "tipo": "movie",
+        "sinopse": "James Bond é encarregado de espionar Goldfinger, um poderoso milionário cujas remessas de ouro espalhadas por diversos países podem esconder ações criminosas. Após ser capturado, Bond descobre que o plano de Goldfinger é bem maior do que ele imaginava: Goldfinger pretende roubar nada mais nada menos do que as reservas americanas de ouro, guardadas no Forte Knox.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/fqVT4kCMNGnUODKe1qASGIPr6Ri.jpg"
+      },
+      {
+        "id": 646,
+        "titulo": "007 Contra o Satânico Dr. No",
+        "tipo": "movie",
+        "sinopse": "James Bond investiga o desaparecimento de um agente britânico. Em meio às suas investigações ele descobre o esconderijo do Dr. No, um gênio louco que pretende desviar o rumo dos foguetes americanos.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/hO3fOAHnmhMkB3NuBzxlsKesrCR.jpg"
+      },
+      {
+        "id": 699,
+        "titulo": "007: Somente para Seus Olhos",
+        "tipo": "movie",
+        "sinopse": "Quando um navio britânico é afundado em águas estrangeiras, as superpotências mundiais começam uma corrida desesperada para achar sua carga: Um sistema submarino de controle nuclear. E James Bond (Roger Moore) é lançado a uma de suas mais eletrizantes aventuras ao participar da procura... E evitar a devastação mundial!",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/ko5EzaFPbKL5Zi2YjbgIdVlgJ5R.jpg"
+      },
+      {
+        "id": 707,
+        "titulo": "007: Na Mira dos Assassinos",
+        "tipo": "movie",
+        "sinopse": "O magnata Max Zorin (Christopher Walken) pretende controlar o mercado de informática. Ele resolve arquitetar um louco plano, no qual milhares de pessoas vão morrer para ficar ainda mais rico. Após retornar da sua viagem na União Soviética com um chip de computador, James Bond (Roger Moore) precisa investigar as indústrias de Zorin e tentar impedir que o vilão realize os seus planos.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/c9pkjwGBLCcpWpdafqjqoGvPhAm.jpg"
+      },
+      {
+        "id": 709,
+        "titulo": "007 - Permissão para Matar",
+        "tipo": "movie",
+        "sinopse": "James Bond desobedece ordens e parte em uma missão para vingar a morte da mulher de seu melhor amigo, assassinada por um chefão das drogas. Ele chega à base sul-americana do narcotraficante e, disfarçado de pistoleiro, é contratado pelo criminoso.",
+        "generos": "Ação, Aventura, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/xV1VrV8H2mBfovoQI4A0sdA0zqg.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789317557899,
+    "usuario_id": "8",
+    "query": "serie sobre um roubo de banco na espanha",
+    "midias_esperadas": [
+      {
+        "id": 71446,
+        "titulo": "La casa de papel",
+        "tipo": "tv",
+        "sinopse": "Um homem misterioso que atende pelo nome de El Profesor, está planejando o maior assalto do século. A fim de realizar o ambicioso plano ele recruta uma gangue de oito pessoas com certas habilidades que não tem nada a perder. O objetivo é infiltrar na Casa da Moeda, de modo que eles possam imprimir 2,4 bilhões de euros. Para fazer isso eles precisam de onze dias de reclusão, durante o qual eles vão ter que lidar com sessenta e sete reféns e as forças da Polícia de Elite, com cenas de muita ação e planos brilhantes de El Profesor.",
+        "generos": "crime, drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/UfXcC5GbCCMPW2qZ3SB8D9hpUz.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789318149040,
+    "usuario_id": "7",
+    "query": "zelador tira vantagem da vida dos moradores",
+    "midias_esperadas": [
+      {
+        "id": 128306,
+        "titulo": "Meu Querido Zelador",
+        "tipo": "tv",
+        "sinopse": "Narra, em tom de ironia e humor, as aventuras de Eliseo, o gestor de um edifício de alto padrão, que, pelas costas do consórcio que o emprega, lança mão e abusa do seu poder de vigilância e interferência. O edifício é um universo cujo ecossistema tem sua dinâmica e regras específicas e Eliseo as conhece perfeitamente.",
+        "generos": "comédia, drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/cKBzAVQbZaQ9YNriSs9dY8Iooaj.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789320286388,
+    "usuario_id": "1",
+    "query": "serie em que os protagonistas sobrevivem a um apocalipse com zumbis",
+    "midias_esperadas": [
+      {
+        "id": 106379,
+        "titulo": "Fallout",
+        "tipo": "tv",
+        "sinopse": "Baseada em uma das maiores séries de videogame de todos os tempos, Fallout é a história de quem tem e de quem não tem, em um mundo onde não existe quase nada para se ter. 200 anos após o apocalipse, uma habitante pacífica de um agradável refúgio é forçada a se aventurar na superfície e fica chocada quando descobre a terra devastada que a espera.",
+        "generos": "action & adventure, sci-fi & fantasy, drama",
+        "url_capa": "https://image.tmdb.org/t/p/w500/tQRX6GbYooU7kUaarKf5YXDTONy.jpg"
+      },
+      {
+        "id": 1402,
+        "titulo": "The Walking Dead",
+        "tipo": "tv",
+        "sinopse": "Nos Estados Unidos pós-apocalíptico, um pequeno grupo de sobreviventes segue viajando à procura de uma nova casa longe dos mortos-vivos. O desespero por segurança e suprimentos os coloca constantemente à beira da sanidade.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/9lb02gTh4LLB17yAEXFd4C3R4JP.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789320969005,
+    "usuario_id": "1",
+    "query": "Cyberpunk",
+    "midias_esperadas": [
+      {
+        "id": 105248,
+        "titulo": "Cyberpunk: Mercenários",
+        "tipo": "tv",
+        "sinopse": "Para sobreviver em uma realidade distópica na qual a corrupção e os implantes cibernéticos controlam tudo, um jovem talentoso e impulsivo decide se tornar um mercenário.",
+        "generos": "animação, action & adventure, sci-fi & fantasy, crime",
+        "url_capa": "https://image.tmdb.org/t/p/w500/nWvAY8yHE873adMws83XqBPf7W2.jpg"
+      },
+      {
+        "id": 12140,
+        "titulo": "O Fantasma do Futuro 2: A Inocência",
+        "tipo": "movie",
+        "sinopse": "No ano 2032, Bato, um ciborgue detetive da unidade antiterrorista da segurança pública Seção 9, investiga o caso de um robô feminino criado exclusivamente para o prazer sexual que matou seu dono.",
+        "generos": "Animação, Drama, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/q1sFT6zp3byJimMYLInCrsOVdsM.jpg"
+      },
+      {
+        "id": 78,
+        "titulo": "Blade Runner: O Caçador de Andróides",
+        "tipo": "movie",
+        "sinopse": "No início do século 21, uma grande corporação desenvolve um robô que é mais forte e ágil que o ser humano e se equiparando em inteligência. São conhecidos como \"replicantes\" e utilizados como escravos na colonização e exploração de outros planetas. Mas, quando um grupo dos robôs mais evoluídos provoca um motim em uma colônia fora da Terra, este incidente faz os replicantes serem considerados ilegais na Terra, sob pena de morte. A partir de então, policiais de um esquadrão de elite conhecidos como \"Blade Runner\", têm ordem de atirar para matar em replicantes encontrados na Terra. Mas tal ato não é chamado de \"execução\" e sim de \"remoção\". Até que, em novembro de 2019, em Los Angeles, quando cinco replicantes chegam à Terra, o ex-Blade Runner, Deckard, é encarregado de caçá-los.",
+        "generos": "Drama, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/y5ibL0vFnzsRiIHosw0WOfHtIj1.jpg"
+      },
+      {
+        "id": 9323,
+        "titulo": "Ghost in the Shell: O Fantasma do Futuro",
+        "tipo": "movie",
+        "sinopse": "Major Motoko Kusanagi, uma ciborgue do Setor de Segurança Pública 9, recebe a missão de capturar um hacker que está dominando a mente de humanos aperfeiçoados por computador. Mas ela acaba se envolvendo em uma trama de conspirações, que atinge interesses da alta cópula da política.",
+        "generos": "Ação, Animação, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/4YgDy47HKxcSwUPQWrg0J39lEZA.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789321042663,
+    "usuario_id": "1",
+    "query": "jornada nas estrelas",
+    "midias_esperadas": [
+      {
+        "id": 1992,
+        "titulo": "Jornada nas Estrelas: A Serie Animada",
+        "tipo": "tv",
+        "sinopse": "Star Trek: A Série Animada é uma série de televisão animada de ficção científica ambientada no universo de Jornada nas Estrelas após os eventos de Jornada nas Estrelas dos anos 1960. Ttornou-se amplamente conhecida sob este nome mais longo para diferenciá-lo do original live-action. O sucesso na sincronização da série original de ação ao vivo e da pressão do fã para um revival, levou a Série Animada de 1973-1974, como a fonte de novas aventuras da equipe da Enterprise. A série foi a primeira a ganhar um Emmy Award.",
+        "generos": "animação, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/jdgBsYYSYfx6lIo523UaRPyY9wS.jpg"
+      },
+      {
+        "id": 314,
+        "titulo": "Jornada nas Estrelas: Enterprise",
+        "tipo": "tv",
+        "sinopse": "Enterprise é a quinta série televisiva com atores reais situada no universo de Jornada nas Estrelas. Criada por Rick Berman e Brannon Braga e baseada na clássica série de Jornada nas Estrelas de 1966 (e nas outras séries seguintes) de Gene Roddenberry, Enterprise foi uma prequel que se passava um século antes da época de Kirk e Spock. A série mostrava as viagens da primeira nave estelar Enterprise e os primeiros passos da humanidade na fronteira final.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/kevpjmNHEpefhQueXqi0vIlGF6Z.jpg"
+      },
+      {
+        "id": 9805,
+        "titulo": "A Espaçonave das Loucas",
+        "tipo": "movie",
+        "sinopse": "No ano de 2304, a Terra está sob ataque. Os exércitos de Marte, conduzidos pelo Regulador e por seu fiel ajudante Jens Maul, querem invadir o planeta. A rainha Metapha e seus conselheiros não têm mais opções, pois a frota estelar já foi toda varrida do espaço. Toda a frota, menos a espaçonave do título (no original, a letra T acrescida transforma nave espacial em nave dos sonhos), cuja tripulação é inteiramente formada por afetados gays. As citações rolam soltas, a filmes como 2001, Guerra nas Estrelas, Jornada nas Estrelas, O Exterminador do Futuro, Alien, Matrix e Minority Report, entre muitos outros. O único ator conhecido do elenco é o astro Til Schweiger, de O Homem Mais Desejado do Mundo, O que Fazer em Caso de Incêndio e Rei Arthur.",
+        "generos": "Aventura, Comédia, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/mwjj1WvnwrKskCatHW0rZn8YAhq.jpg"
+      },
+      {
+        "id": 1855,
+        "titulo": "Jornada nas Estrelas: Voyager",
+        "tipo": "tv",
+        "sinopse": "A USS Voyager está perseguindo uma nave Maquis quando ambas são puxadas para dentro de um vortex, que os envia direto para o Quadrante Delta a mais de 75.000 anos luz do espaço da Federação. No entanto, após a destruição do aparelho que os transportou para o quadrante, as tripulações das duas naves devem unir forças para tentar voltar ao Quadrante Alfa, que está a dezenas de anos de distância. Apesar dos obstáculos que encontram pelo caminho, eles se unem como uma só equipe, entre Maquis e Frota Estelar.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/6X6NT6e6p0sJzwsZD5LpNk5izVp.jpg"
+      },
+      {
+        "id": 152,
+        "titulo": "Jornada nas Estrelas: O Filme",
+        "tipo": "movie",
+        "sinopse": "Um fenômeno alienígena de poder e tamanho descomunal se aproxima da Terra, destruindo tudo em seu caminho. A única nave que pode enfrentar esta força letal que ameaça a Terra é a U.S.S. Enterprise. O lendário comandante James T. Kirk é convocado para a missão, mas um perigo não previsto pode destruir a U.S.S. Enterprise e toda a sua tripulação.",
+        "generos": "Aventura, Ficção científica, Mistério",
+        "url_capa": "https://image.tmdb.org/t/p/w500/3wcoaTf0nGm8Xy9sb54NbkCofQe.jpg"
+      },
+      {
+        "id": 157,
+        "titulo": "Jornada nas Estrelas III: À Procura de Spock",
+        "tipo": "movie",
+        "sinopse": "Ainda sob o pesar do sacrifício final de Spock, a tripulação da U.S.S. Enterprise volta para a Terra do recém-nascido planeta Genesis. Mas nada vai ser fácil: Scott foi destacado para um outro posto; o Dr. McCoy parece estar vivendo um surto psicótico, e a Enterprise A será desativada.Quando Kirk recebe a visita de Sarek, pai de Spock, descobre que o falecido amigo pode ter a chance de ter uma segunda vida. E para isso, deve retornar a Genesis, onde enfrentará o maior dilema de sua carreira.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/qkbbeJuj85BGQJlQRkqfdVlTL1N.jpg"
+      },
+      {
+        "id": 655,
+        "titulo": "Jornada nas Estrelas: A Nova Geração",
+        "tipo": "tv",
+        "sinopse": "Um século após a missão de cinco anos do capitão Kirk, a nova geração de oficiais da Frota Estelar começa sua jornada a bordo da nova nave capitânia da Federação. Comandado pelo Capitão Jean-Luc Picard, a nave estelar classe Galaxy Enterprise NCC-1701-D, vai procurar novas vidas e novas civilizações - audaciosamente indo onde ninguém jamais esteve",
+        "generos": "ação e aventura, drama, ficção científica e fantasia, mistério",
+        "url_capa": "https://image.tmdb.org/t/p/w500/72sME47Jn3cjttpbPn3DU0ci3O1.jpg"
+      },
+      {
+        "id": 253,
+        "titulo": "Jornada nas Estrelas",
+        "tipo": "tv",
+        "sinopse": "Espaço. A Fronteira Final. A U.S.S. Enterprise embarca em uma missão de cinco anos para explorar a galáxia. A Enterprise está sob o comando do Capitão James T. Kirk e do Primeiro Oficial Sr. Spock, do planeta Vulcano. Com uma tripulação determinada, sua missão é explorar novos mundos estranhos, buscar novas formas de vida e ousar ir aonde nenhum homem jamais esteve.",
+        "generos": "drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/uph0yY3gmPV5ubwTTZvfH5B4up5.jpg"
+      },
+      {
+        "id": 200,
+        "titulo": "Jornada nas Estrelas: Insurreição",
+        "tipo": "movie",
+        "sinopse": "No planeta Ba'ku, com apenas 600 habitantes, uma estação arqueológica da Federação em conjunto com a raça So'na é atacada pelo tenente-comandante Data, enviado para observações. Mandado para investigar, Picard recebe a ordem de atacar o planeta, mas ele se rebela. O motivo do ataque: os So'na e a Federação querem a fonte da juventude que existe em Ba'ku.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/kQg1M46bIcqozNYfhYPJs93Dd2w.jpg"
+      },
+      {
+        "id": 193,
+        "titulo": "Jornada nas Estrelas: Generations",
+        "tipo": "movie",
+        "sinopse": "A viagem inaugural da terceira nave Enterprise está ameaçada pelo cientista louco Soren e apenas uma pessoa pode detê-lo, mas ela está morta há 78 anos.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/tVyaD651EiuME23UdhoAHHg3BlV.jpg"
+      },
+      {
+        "id": 172,
+        "titulo": "Jornada nas Estrelas V: A Última Fronteira",
+        "tipo": "movie",
+        "sinopse": "Data estelar: 8454.130. O capitão Kirk, que está de férias, tem que enfrentar dois desafios: escalar o El Capitan, no Yosemite, e ensinar cantigas de acampamento para Spock. Mas o lazer é bruscamente interrompido quando um vulcaniano renegado rapta a Enterprise e a leva para desvendar os mais profundos segredos do universo.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/rJL0dvTkt2IbduOTjbmdeyPa6X0.jpg"
+      },
+      {
+        "id": 174,
+        "titulo": "Jornada nas Estrelas VI: A Terra Desconhecida",
+        "tipo": "movie",
+        "sinopse": "Após a explosão da lua Praxis, os klingons são obrigados a propor um acordo de paz para garantir a sobrevivência de sua espécie. A tripulação da Enterprise é convocada a escoltar a missão diplomática klingoniana até o local a reunião, mas a nave klingon é atacada e o seu chanceler acaba sendo morto. E tudo indica que o ataque partiu justamente da Enterprise.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/xOIRuEWq2otcK6pGGntBGIKquC9.jpg"
+      },
+      {
+        "id": 201,
+        "titulo": "Jornada nas Estrelas: Nêmesis",
+        "tipo": "movie",
+        "sinopse": "O capitão Jean-Luc Picard e a tripulação da Enterprise são enviados em uma missão diplomática de paz rumo ao planeta Romulus. Lá eles precisam deter uma rebelião liderada por Shinzou que ameaça destruir a Terra, bem como enfrentar um perigoso clone do próprio capitão Picard.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/zXp12dqRNk5JPoLN8pbW2VKL6GN.jpg"
+      },
+      {
+        "id": 199,
+        "titulo": "Jornada nas Estrelas: Primeiro Contato",
+        "tipo": "movie",
+        "sinopse": "O capitão da Enterprise volta a encontrar os seus adversários, os Borg. Eles planejam mudar a história e conquistar a Terra no século XXI, através de uma viagem no tempo, que impediria o primeiro voo em dobra da raça humana e o subsequente primeiro contato com uma raça extraterrestre: os Vulcanos.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/idKfn9XDzVSemYDw7tsohdRNA5b.jpg"
+      },
+      {
+        "id": 168,
+        "titulo": "Jornada nas Estrelas IV: A Volta para Casa",
+        "tipo": "movie",
+        "sinopse": "Marcados como fugitivos pela própria Federação que juraram proteger, os tripulantes da Enterprise voltam para a Terra para enfrentar a corte marcial por crimes cometidos ao salvar a vida de Spock. Em seu caminho, contudo, descobrem que o planeta está sendo devastado por uma gigantesca sonda alienígena, que exige uma resposta de uma forma de vida há muito extinta da Terra. Dentro da nave klingon capturada, Kirk e sua tripulação devem voltar no tempo para salvar a Terra e redescobrir o sentido da amizade.",
+        "generos": "Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/1QfHoXsGaMc1OgGcBoPNxcJ9WeI.jpg"
+      },
+      {
+        "id": 154,
+        "titulo": "Jornada nas Estrelas II: A Ira de Khan",
+        "tipo": "movie",
+        "sinopse": "Sentido que o futuro em nada se parece com o passado que vivemos, o Almirante James T. Kirk começa a acreditar que cavalgar pelo cosmos é um jogo para os jovens. Até que numa viagem de rotina para inspecionar a U.S.S. Enterprise, a carreira de Kirk na Frota Estelar entra em um novo capítulo quando surge um antigo inimigo, Khan Noonien Singh, um conquistador do século 20 geneticamente alterado. Escapando de sua prisão, Khan planeja capturar o Projeto Genesis, um artefato que pode criar e destruir um planeta num piscar de olhos, e destruir seu velho \"amigo\", Kirk.",
+        "generos": "Ação, Aventura, Ficção científica, Thriller",
+        "url_capa": "https://image.tmdb.org/t/p/w500/iiG4D2LmUkK0gGWnfUzaXHeCnlR.jpg"
+      },
+      {
+        "id": 580,
+        "titulo": "Jornada nas Estrelas: A Nova Missão",
+        "tipo": "tv",
+        "sinopse": "Quando a ocupação Cardassiana de Bajor terminou em 2369, a estação espacial mineradora Terok Nor foi deixada abandonado, seus sistemas arrancados. A convite do governo Bajorano provisório, A Frota Estelar veio para supervisionar a reconstrução e as operações do dia-a dia da Deep Space Nine, recém batizada. A DS9 logo se torna um centro de viagem e comércio, graças a um wormhole estável recentemente encontrado, levando ao Quadrante Gama altamente inexplorado.",
+        "generos": "ação e aventura, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/wtraXjUqwVAcFiBEM1BywyrxoF4.jpg"
+      }
+    ]
+  },
+  {
+    "id": 1789321130406,
+    "usuario_id": "1",
+    "query": "Star wars",
+    "midias_esperadas": [
+      {
+        "id": 25,
+        "titulo": "Star Wars: Droids",
+        "tipo": "tv",
+        "sinopse": "Anos antes de conhecerem Luke Skywalker, seus droides favoritos de Star Wars vagavam pela galáxia em aventuras superempolgantes! Junte-se a R2-D2 e C-3PO nesta série animada cheia de ação, na qual eles exploram os confins do espaço em sua busca interminável por um bom mestre!",
+        "generos": "ação e aventura, animação, infantil, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/AuGZbGeOQt30zsoTUSPlS8kMe1v.jpg"
+      },
+      {
+        "id": 4194,
+        "titulo": "Star Wars: The Clone Wars",
+        "tipo": "tv",
+        "sinopse": "A guerra dos clones se expande por toda a galáxia, e os heróis Jedi lutam desesperadamente a fim de manter a ordem e a paz. Sistemas sucumbem perante o lado negro da força e a República Galáctica está sofrendo contínua pressão dos Separatistas e seu infinito exército de dróides.",
+        "generos": "ação e aventura, animação, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/pvDFqSHSdyWiPu0ihJJkDXxnBM9.jpg"
+      },
+      {
+        "id": 1895,
+        "titulo": "Star Wars: Episódio III - A Vingança dos Sith",
+        "tipo": "movie",
+        "sinopse": "As Guerras Clônicas estão em pleno andamento e Anakin Skywalker mantém um elo de lealdade com Palpatine, ao mesmo tempo em que luta para que seu casamento com Padmé Amidala não seja afetado por esta situação. Seduzido por promessas de poder, Anakin se aproxima cada vez mais de Darth Sidious até se tornar o temível Darth Vader. Juntos eles tramam um plano para aniquilar de uma vez por todas com os cavaleiros jedi.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/nuF5yWtTJEEAd4Qa6cVkYz1XCST.jpg"
+      },
+      {
+        "id": 12180,
+        "titulo": "Star Wars: A Guerra dos Clones",
+        "tipo": "movie",
+        "sinopse": "Enquanto as Guerras Clônicas varrem a galáxia, Anakin Skywalker e sua nova Padawan, Ahsoka Tano, embarcam em uma missão para resgatar o filho de Jabba, o Hutt. O renegado Conde Dookan, contudo, está determinado a garantir que eles falhem.",
+        "generos": "Ação, Animação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/cOPlN7s32Unwh0ZveLB54z6glBQ.jpg"
+      },
+      {
+        "id": 1894,
+        "titulo": "Star Wars: Episódio II - Ataque dos Clones",
+        "tipo": "movie",
+        "sinopse": "Com a missão de proteger a Senadora Amidala, Anakin Skywalker descobre o seu amor por ela, do mesmo modo que vai conhecendo seu lado sombrio. Obi-Wan Kenobi descobre um exército de clones à medida que a Galáxia caminha para uma grande guerra.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/9m1nJ2MfTG5QEmjOCg0b4YCo4W8.jpg"
+      },
+      {
+        "id": 1893,
+        "titulo": "Star Wars: Episódio I - A Ameaça Fantasma",
+        "tipo": "movie",
+        "sinopse": "Enquanto resgatam a Rainha Amidala, governante de um planeta pacífico invadido por forças ameaçadoras, os Cavaleiros Jedi Obi-Wan Kenobi e Qui-Gon Jinn descobrem Anakin Skywalker, uma criança prodígio de 9 anos excepcionalmente poderosa na Força.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/gNk8UNAumXlfCdtaxDqsQe7ZGlt.jpg"
+      },
+      {
+        "id": 3122,
+        "titulo": "Star Wars: Guerras Clônicas",
+        "tipo": "tv",
+        "sinopse": "A série narra a batalha de Muunilist, onde Obi-Wan Kenobi e Anakin Skywalker lutaram para derrubar o Clã Intergalático de Bancos, enquanto o Conde Dooku contratava Asajj Ventress para assassinar Anakin. Além da batalha de Muunilist, mostra vários outros Jedi batalhando em outros locais, como Mace Windu em Dathomir e Kit Fisto em Mon Calamari.",
+        "generos": "ação e aventura, animação, drama, ficção científica e fantasia",
+        "url_capa": "https://image.tmdb.org/t/p/w500/jKfAVTGkf9qpGPZ4E1pNKdW6vra.jpg"
+      },
+      {
+        "id": 1891,
+        "titulo": "Guerra nas Estrelas: O Império Contra-Ataca",
+        "tipo": "movie",
+        "sinopse": "As forças imperais comandadas por Darth Vader lançam um ataque contra os membros da resistência, que são obrigados a fugir. Enquanto isso Luke Skywalker tenta encontrar o Mestre Yoda, que poderá ensiná-lo a dominar a \"Força\" e torná-lo um cavaleiro jedi. No entanto, Darth Vader planeja levá-lo para o lado negro da \"Força\".",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/dLGT8b4Ut10z44uYLaip4QiwKta.jpg"
+      },
+      {
+        "id": 1892,
+        "titulo": "Guerra nas Estrelas: O Retorno de Jedi",
+        "tipo": "movie",
+        "sinopse": "O imperador está supervisionando a construção de uma nova Estrela da Morte. Enquanto isso Luke Skywalker liberta Han Solo e a Princesa Leia das mãos de Jaba. Luke só se tornará um cavaleiro jedi quando destruir Darth Vader, que ainda pretende atraí-lo para o lado sombrio da Força.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/llaJ35p5e23ygDbqd0H3otJLWsA.jpg"
+      },
+      {
+        "id": 11,
+        "titulo": "Guerra nas Estrelas",
+        "tipo": "movie",
+        "sinopse": "A princesa Leia é mantida refém pelas forças imperiais comandadas por Darth Vader. Luke Skywalker e Han Solo precisam libertá-la e restaurar a liberdade e a justiça na galáxia.",
+        "generos": "Ação, Aventura, Ficção científica",
+        "url_capa": "https://image.tmdb.org/t/p/w500/dw7X9YPjjAfIxKHW04V64Bb9TB0.jpg"
       }
     ]
   }

@@ -1,16 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import type { Midia, CasoDeTeste, RecomendacaoResultado, Metricas } from './Components/types';
+import ApiTester from './Components/ApiTester';
 
 const STORAGE_KEY = 'kplus_gabaritos_v1';
-const API_BASE_URL = 'http://localhost:8000';
+const DEFAULT_API_BASE_URL = (import.meta as any).env?.VITE_API_BASE_URL || 'http://localhost:8000';
 
 export default function PainelRecomendador() {
   // --- ESTADOS GLOBAIS & AUTH ---
-  const [abaAtiva, setAbaAtiva] = useState<1 | 2>(1);
+  const [abaAtiva, setAbaAtiva] = useState<0 | 1 | 2>(0);
+  const [apiBaseUrl, setApiBaseUrl] = useState<string>(() => {
+    return localStorage.getItem('kplus_api_url') || DEFAULT_API_BASE_URL;
+  });
   const [tokenJWT, setTokenJWT] = useState<string>(() => localStorage.getItem('kplus_token') || '');
   const [email, setEmail] = useState<string>('');
   const [senha, setSenha] = useState<string>('');
+
+  const handleUpdateApiBaseUrl = (newUrl: string) => {
+    const urlLimpa = newUrl.trim().replace(/\/+$/, '');
+    setApiBaseUrl(urlLimpa);
+    localStorage.setItem('kplus_api_url', urlLimpa);
+  };
 
   // Gabaritos persistidos localmente
   const [gabaritos, setGabaritos] = useState<CasoDeTeste[]>(() => {
@@ -50,7 +60,7 @@ export default function PainelRecomendador() {
       formData.append('username', email);
       formData.append('password', senha);
 
-      const res = await fetch(`${API_BASE_URL}/auth/login`, {
+      const res = await fetch(`${apiBaseUrl}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: formData.toString()
@@ -83,7 +93,7 @@ export default function PainelRecomendador() {
         peso_colaborativo: '0.0'
       });
 
-      const res = await fetch(`${API_BASE_URL}/midias/recomendar?${params.toString()}`, {
+      const res = await fetch(`${apiBaseUrl}/midias/recomendar?${params.toString()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -202,7 +212,7 @@ export default function PainelRecomendador() {
         limit: '12'
       });
 
-      const res = await fetch(`${API_BASE_URL}/midias/recomendar?${params.toString()}`, {
+      const res = await fetch(`${apiBaseUrl}/midias/recomendar?${params.toString()}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -260,95 +270,135 @@ export default function PainelRecomendador() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto p-6 font-sans text-slate-800">
-      {/* CABEÇALHO DA API */}
-      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+    <div className="max-w-6xl mx-auto p-4 sm:p-6 font-sans text-slate-800 space-y-6">
+      {/* CABEÇALHO GLOBAL */}
+      <header className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-slate-200 pb-5">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">kplus - Painel de Ground Truth</h1>
-          <p className="text-xs text-slate-500">Conectado a: {API_BASE_URL}</p>
+          <div className="flex items-center gap-2">
+            <span className="text-2xl">🍿</span>
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
+              KPlus <span className="text-indigo-600 font-extrabold text-lg sm:text-xl font-mono">Recomendador IA</span>
+            </h1>
+          </div>
+          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+            Motor de Recomendação Híbrido Triplo (Embeddings BERT + FTS Textual + Filtragem Colaborativa)
+          </p>
         </div>
 
-        <form onSubmit={handleLogin} className="flex gap-2 w-full md:w-auto">
-          <input
-            type="email"
-            placeholder="E-mail"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="px-3 py-1.5 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            placeholder="Senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            className="px-3 py-1.5 border border-slate-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
+        {/* NAVEGAÇÃO DE ABAS */}
+        <div className="flex flex-wrap items-center bg-slate-100 p-1.5 rounded-2xl border border-slate-200 gap-1">
           <button
-            type="submit"
-            className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded-md transition-colors"
+            onClick={() => setAbaAtiva(0)}
+            className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all flex items-center gap-1.5 ${
+              abaAtiva === 0
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
           >
-            {tokenJWT ? 'Autenticado ✓' : 'Login API'}
+            <span>🧪</span> Testar API (Playground)
           </button>
-        </form>
+          <button
+            onClick={() => setAbaAtiva(1)}
+            className={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center gap-1.5 ${
+              abaAtiva === 1
+                ? 'bg-slate-900 text-white shadow'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <span>📋</span> Coleta Ground Truth
+          </button>
+          <button
+            onClick={() => setAbaAtiva(2)}
+            className={`px-3.5 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all flex items-center gap-1.5 ${
+              abaAtiva === 2
+                ? 'bg-slate-900 text-white shadow'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <span>📊</span> Otimização de Pesos
+          </button>
+        </div>
       </header>
 
-      {/* GERENCIAMENTO DE ARQUIVOS */}
-      <div className="flex flex-wrap justify-between items-center bg-slate-100 p-4 rounded-lg mb-6 gap-3 border border-slate-200">
-        <div className="text-sm font-medium text-slate-700">
-          Gabaritos Cadastrados: <span className="font-bold text-blue-600">{gabaritos.length}</span>
-        </div>
-        <div className="flex gap-2">
-          <input
-            type="file"
-            accept=".json"
-            ref={fileInputRef}
-            onChange={handleImportarJSON}
-            className="hidden"
-          />
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            className="px-3 py-1.5 bg-slate-700 hover:bg-slate-800 text-white text-sm font-medium rounded-md transition-colors"
-          >
-            📂 Importar JSON
-          </button>
-          <button
-            onClick={handleExportarJSON}
-            className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium rounded-md transition-colors"
-          >
-            💾 Exportar JSON
-          </button>
-          <button
-            onClick={handleLimparTudo}
-            className="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-sm font-medium rounded-md transition-colors"
-          >
-            🗑️ Limpar
-          </button>
-        </div>
-      </div>
+      {/* ABA 0: PLAYGROUND DEDICADO DE TESTES DA API */}
+      {abaAtiva === 0 && (
+        <ApiTester
+          apiBaseUrl={apiBaseUrl}
+          onUpdateApiBaseUrl={handleUpdateApiBaseUrl}
+          tokenJWT={tokenJWT}
+          onSetToken={(token) => {
+            setTokenJWT(token);
+            if (token) localStorage.setItem('kplus_token', token);
+            else localStorage.removeItem('kplus_token');
+          }}
+        />
+      )}
 
-      {/* NAVEGAÇÃO DE ABAS */}
-      <div className="flex gap-2 mb-6 border-b border-slate-200 pb-2">
-        <button
-          onClick={() => setAbaAtiva(1)}
-          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${
-            abaAtiva === 1
-              ? 'bg-blue-600 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          Aba 1: Coleta de Ground Truth
-        </button>
-        <button
-          onClick={() => setAbaAtiva(2)}
-          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${
-            abaAtiva === 2
-              ? 'bg-blue-600 text-white'
-              : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
-        >
-          Aba 2: Avaliação de Pesos (Híbrido)
-        </button>
-      </div>
+      {/* GERENCIAMENTO DE ARQUIVOS (APENAS NAS ABAS 1 E 2) */}
+      {abaAtiva !== 0 && (
+        <div className="space-y-4">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+            <span className="text-xs text-slate-500 font-mono">
+              API Conectada: <strong className="text-slate-700">{apiBaseUrl}</strong>
+            </span>
+            <form onSubmit={handleLogin} className="flex gap-2 w-full sm:w-auto">
+              <input
+                type="email"
+                placeholder="E-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="px-2.5 py-1 border border-slate-300 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="password"
+                placeholder="Senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+                className="px-2.5 py-1 border border-slate-300 rounded-md text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <button
+                type="submit"
+                className="px-3 py-1 bg-slate-800 hover:bg-slate-900 text-white font-medium text-xs rounded-md transition-colors"
+              >
+                {tokenJWT ? 'Autenticado ✓' : 'Login'}
+              </button>
+            </form>
+          </div>
+
+          <div className="flex flex-wrap justify-between items-center bg-slate-100 p-4 rounded-xl gap-3 border border-slate-200">
+            <div className="text-sm font-medium text-slate-700">
+              Gabaritos Cadastrados: <span className="font-bold text-indigo-600">{gabaritos.length}</span>
+            </div>
+            <div className="flex gap-2">
+              <input
+                type="file"
+                accept=".json"
+                ref={fileInputRef}
+                onChange={handleImportarJSON}
+                className="hidden"
+              />
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                className="px-3 py-1.5 bg-slate-700 hover:bg-slate-800 text-white text-xs font-medium rounded-lg transition-colors"
+              >
+                📂 Importar JSON
+              </button>
+              <button
+                onClick={handleExportarJSON}
+                className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium rounded-lg transition-colors"
+              >
+                💾 Exportar JSON
+              </button>
+              <button
+                onClick={handleLimparTudo}
+                className="px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white text-xs font-medium rounded-lg transition-colors"
+              >
+                🗑️ Limpar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ABA 1 */}
       {abaAtiva === 1 && (

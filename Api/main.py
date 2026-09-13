@@ -21,20 +21,25 @@ from .auth import (
 
 app = FastAPI(title="KPlus API - Recomendador Híbrido Triplo com Autenticação")
 
-# Habilita CORS para o frontend em desenvolvimento (Vite pode usar 5173/5174)
+cors_origins_env = os.getenv("CORS_ORIGINS", "")
+allowed_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5174",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://192.168.1.104:5173",
+    "http://192.168.1.104:5174",
+]
+if cors_origins_env:
+    allowed_origins.extend([origin.strip() for origin in cors_origins_env.split(",") if origin.strip()])
+
+# Habilita CORS flexível para desenvolvimento e produção
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5174",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://192.168.1.104:5173",
-        "http://192.168.1.104:5174",
-        
-    ],
+    allow_origins=allowed_origins,
+    allow_origin_regex=os.getenv("CORS_ORIGIN_REGEX", r"https?://.*"),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -43,14 +48,41 @@ app.add_middleware(
 model = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
 
 def get_db_connection():
+    db_url = os.getenv("DATABASE_URL")
+    if db_url:
+        return psycopg2.connect(db_url, cursor_factory=RealDictCursor)
     return psycopg2.connect(
-        dbname=os.getenv("DB_NAME"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASSWORD"),
-        host=os.getenv("DB_HOST"),
-        port=os.getenv("DB_PORT"),
+        dbname=os.getenv("DB_NAME", "sistema_de_recomendacao"),
+        user=os.getenv("DB_USER", "postgres"),
+        password=os.getenv("DB_PASSWORD", ""),
+        host=os.getenv("DB_HOST", "localhost"),
+        port=os.getenv("DB_PORT", "5432"),
         cursor_factory=RealDictCursor
     )
+
+@app.get("/", tags=["Sistema"])
+def root():
+    return {
+        "status": "online",
+        "api": "KPlus API - Recomendador Híbrido Triplo",
+        "versao": "1.0.0",
+        "docs": "/docs"
+    }
+
+@app.get("/health", tags=["Sistema"])
+def health_check():
+    db_status = "desconhecido"
+    try:
+        with get_db_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("SELECT 1;")
+                db_status = "conectado"
+    except Exception as e:
+        db_status = f"erro: {str(e)}"
+    return {
+        "status": "ok" if db_status == "conectado" else "degradado",
+        "database": db_status
+    }
 
 
 # -----------------------------------------------------------------------------
