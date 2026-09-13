@@ -9,6 +9,8 @@ from psycopg2.extras import RealDictCursor
 from .schemas import (MidiaResponse, UsuarioCadastro, TokenResponse, AvaliacaoSchema)
 from dotenv import load_dotenv
 import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["OMP_NUM_THREADS"] = "1"
 load_dotenv()
 # Importa as funções do módulo de autenticação
 from .auth import (

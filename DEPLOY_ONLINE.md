@@ -112,49 +112,100 @@ Depois, para importar no Supabase:
 
 ## 🐍 Passo 2: Backend Online (FastAPI + Machine Learning)
 
-> 💡 **Dica de Ouro**: O modelo `paraphrase-multilingual-MiniLM-L12-v2` necessita de aproximadamente 1 GB a 1.5 GB de RAM para carregar os pesos em PyTorch. O plano gratuito do Render limita a 512 MB (podendo sofrer travamentos de memória).  
-> **Recomendação**: Use o **Hugging Face Spaces** (oferece **16 GB de RAM e 2 vCPUs 100% gratuitos** com suporte a Docker) ou o **Railway**.
-
-### Opção A: Hugging Face Spaces (Recomendado - 16 GB RAM Grátis)
-1. Crie uma conta no [huggingface.co](https://huggingface.co).
-2. Clique em sua foto de perfil no topo direito e selecione **"New Space"**.
-3. Preencha:
-   - **Space name**: `kplus-api`
-   - **License**: `mit`
-   - **Select the Space SDK**: **Docker** -> **Blank**
-   - **Space Hardware**: Free (2 vCPU, 16 GB RAM)
-   - **Visibility**: Public
-4. Clique em **"Create Space"**.
-5. No repositório do Space (você pode conectar via Git ou fazer upload dos arquivos pelo navegador):
-   - Suba o arquivo `Dockerfile` (já criado no projeto)
-   - Suba o arquivo `requirements.txt`
-   - Suba a pasta `Api/` com todo seu conteúdo
-6. Vá em **Settings** do Space -> **Variables and secrets**:
-   - Adicione o secret `DATABASE_URL` com o valor copiado do Supabase.
-   - Adicione o secret `JWT_KEY` com uma chave segura (ex: `super_chave_jwt_kplus_2026`).
-   - Adicione o secret `SECRET_KEY` com uma chave segura.
-7. O Hugging Face iniciará o build do Dockerfile automaticamente. Quando o status mudar para **Running**, copie a URL pública da sua API (ex: `https://italoweb-kplus-api.hf.space`).
-8. Teste no navegador: `https://italoweb-kplus-api.hf.space/docs` abrirá a documentação interativa Swagger!
+> ⚠️ **Nota Importante**: O modelo `paraphrase-multilingual-MiniLM-L12-v2` precisa de ~1–1.5 GB de RAM para carregar em PyTorch.
+> O **Hugging Face Spaces** (Docker e Gradio SDKs) e muitas plataformas gratuitas tradicionais passaram a exigir pagamento para suportar esse volume de memória.
+> As opções abaixo são as alternativas **realmente gratuitas** e funcionais em 2026.
 
 ---
 
-### Opção B: Render.com (Web Service)
-1. Acesse [render.com](https://render.com) e conecte sua conta do GitHub.
-2. Clique em **"New +"** -> **"Web Service"**.
+### ⭐ Opção A: Railway.app (Recomendado — $5/mês de crédito grátis)
+
+O Railway oferece **$5 USD de crédito mensal sem cartão de crédito** e suporta Docker nativamente. Para uma API leve como esta, $5 cobre o mês inteiro com folga.
+
+1. Acesse [railway.app](https://railway.app) e faça login com sua conta do **GitHub**.
+2. Clique em **"New Project"** → **"Deploy from GitHub repo"**.
+3. Selecione o repositório `sistema_de_recomendacao_ia`.
+4. O Railway detectará o `Dockerfile` automaticamente. Clique em **"Deploy"**.
+5. Após o deploy inicial, vá em **Variables** e adicione:
+   - `DATABASE_URL` → sua string de conexão do Supabase
+   - `JWT_KEY` → chave JWT segura (ex: `kplus_jwt_super_secreto_2026`)
+   - `SECRET_KEY` → chave secreta adicional
+   - `PORT` → `8000`
+6. Vá em **Settings** → **Networking** → **Generate Domain** para obter sua URL pública (ex: `https://kplus-api-production.up.railway.app`).
+7. Teste: acesse `<sua-url>/docs` para ver a documentação Swagger interativa.
+
+> 💡 **Dica**: O Railway para a instância após inatividade (similar ao Render), mas reinicia automaticamente ao receber uma requisição em ~30 segundos.
+
+---
+
+### Opção B: Render.com (Web Service Gratuito — 512 MB RAM)
+
+O Render tem um tier gratuito com 512 MB de RAM. O modelo MiniLM pode funcionar, mas é apertado. Use as otimizações abaixo para garantir o funcionamento:
+
+#### Otimização de memória para o Render
+
+Antes de fazer o deploy no Render, adicione ao topo do `Api/main.py` (logo após os imports):
+
+```python
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["OMP_NUM_THREADS"] = "1"
+```
+
+Isso reduz o consumo de RAM em ~30% ao desabilitar paralelismo desnecessário.
+
+#### Passos do deploy no Render:
+1. Acesse [render.com](https://render.com) e conecte sua conta do **GitHub**.
+2. Clique em **"New +"** → **"Web Service"**.
 3. Selecione o repositório `sistema_de_recomendacao_ia`.
 4. Configure:
    - **Name**: `kplus-api`
-   - **Runtime**: `Docker` (usará o `Dockerfile` existente) ou `Python 3`
-   - Se escolher Python:
-     - **Build Command**: `pip install -r requirements.txt`
-     - **Start Command**: `uvicorn Api.main:app --host 0.0.0.0 --port $PORT`
-   - **Instance Type**: Free
-5. Na seção **Environment Variables**, adicione:
-   - `DATABASE_URL`: String de conexão do Supabase
-   - `JWT_KEY`: Chave JWT
-   - `SECRET_KEY`: Chave secreta
-   - `PYTHON_VERSION`: `3.11.9`
-6. Clique em **"Create Web Service"**. Em instantes você terá sua URL pública (ex: `https://kplus-api.onrender.com`).
+   - **Runtime**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt`
+   - **Start Command**: `uvicorn Api.main:app --host 0.0.0.0 --port $PORT`
+   - **Instance Type**: **Free**
+5. Em **Environment Variables**, adicione:
+   - `DATABASE_URL` → string de conexão do Supabase
+   - `JWT_KEY` → chave JWT
+   - `SECRET_KEY` → chave secreta
+   - `PYTHON_VERSION` → `3.11.9`
+6. Clique em **"Create Web Service"**. URL gerada: `https://kplus-api.onrender.com`
+
+> ⚠️ **Atenção**: No tier gratuito, o Render hiberna a instância após 15 min de inatividade. A primeira requisição pode levar até 50 segundos para "acordar" o servidor. Para uso em apresentações, faça uma requisição de aquecimento antes.
+
+---
+
+### Opção C: Oracle Cloud Always Free (Melhor Performance — 24 GB RAM Permanentemente)
+
+A Oracle oferece **instâncias ARM com 4 vCPUs e 24 GB de RAM permanentemente grátis** (sem limite de tempo, sem cartão obrigatório após ativação). É a melhor opção técnica, mas requer mais configuração manual.
+
+1. Crie uma conta em [cloud.oracle.com](https://cloud.oracle.com) (requer cartão de crédito para verificação, mas **não cobra nada** no Always Free).
+2. Crie uma instância **Ampere A1 Compute** (ARM):
+   - Shape: `VM.Standard.A1.Flex` → 4 OCPUs, 24 GB RAM
+   - Imagem: `Canonical Ubuntu 22.04`
+3. Configure regras de firewall (Security Lists) para liberar as portas **22 (SSH)** e **8000 (API)**.
+4. Conecte via SSH e execute:
+   ```bash
+   # Instala dependências
+   sudo apt update && sudo apt install -y python3-pip python3-venv git
+   git clone https://github.com/SEU_USUARIO/sistema_de_recomendacao_ia.git
+   cd sistema_de_recomendacao_ia
+
+   # Cria ambiente virtual e instala
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+
+   # Configura variáveis de ambiente
+   export DATABASE_URL="sua_url_supabase"
+   export JWT_KEY="sua_chave_jwt"
+   export SECRET_KEY="sua_chave_secreta"
+
+   # Inicia com systemd (para manter rodando após fechar o SSH)
+   uvicorn Api.main:app --host 0.0.0.0 --port 8000
+   ```
+5. Para tornar permanente, configure um serviço `systemd` ou use `pm2` + `nohup`.
+
+---
 
 ---
 
@@ -170,7 +221,7 @@ Depois, para importar no Supabase:
    - **Output Directory**: `dist`
 5. Expanda **Environment Variables** e adicione:
    - **Key**: `VITE_API_BASE_URL`
-   - **Value**: URL do seu backend online (ex: `https://italoweb-kplus-api.hf.space` ou `https://kplus-api.onrender.com`).
+   - **Value**: URL do seu backend online (ex: `https://kplus-api-production.up.railway.app` ou `https://kplus-api.onrender.com`).
 6. Clique em **"Deploy"**!
 7. Em menos de 1 minuto, sua aplicação estará online com certificado SSL (HTTPS) gratuito em:
    `https://kplus-ground-truth.vercel.app` (ou o nome que você escolher).
@@ -184,7 +235,7 @@ Com tudo publicado, basta compartilhar o link da Vercel:
 2. **Status Conectado**: O indicador no topo mostrará `Online (XXms)`.
 3. **Busca e Recomendações**:
    - Pode clicar nas sugestões prontas (ex: *"Séries de ficção científica com viagem no tempo"*) ou digitar qualquer consulta.
-   - Pode ajustar os pesos do motor híbrido (Semântico, Textual e Colaborativo) para comparar a influência de cada técnica.
+   - O motor híbrido usa pesos calibrados automaticamente (Semântico 50%, Textual 20%, Colaborativo 30%) — nenhuma configuração necessária.
 4. **Avaliação Interativa**:
    - Clicando em "Criar Usuário de Teste (1 Clique)", o sistema gera uma conta temporária instantânea.
    - Ao clicar nas estrelas de 1 a 5 em qualquer filme, a avaliação é salva no banco na hora (`POST /midias/avaliar`).
