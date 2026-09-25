@@ -280,21 +280,19 @@ export default function PainelRecomendador() {
       <div className="flex gap-2 mb-6 border-b border-slate-200 pb-2">
         <button
           onClick={() => setAbaAtiva(1)}
-          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${
-            abaAtiva === 1
+          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${abaAtiva === 1
               ? 'bg-blue-600 text-white'
               : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
+            }`}
         >
           Aba 1: Coleta de Ground Truth
         </button>
         <button
           onClick={() => setAbaAtiva(2)}
-          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${
-            abaAtiva === 2
+          className={`px-4 py-2 font-semibold text-sm rounded-t-md transition-colors ${abaAtiva === 2
               ? 'bg-blue-600 text-white'
               : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-          }`}
+            }`}
         >
           Aba 2: Avaliação de Pesos
         </button>
@@ -351,11 +349,10 @@ export default function PainelRecomendador() {
                   <div
                     key={item.id}
                     onClick={() => toggleSelecaoMidia(item)}
-                    className={`p-3 border-2 rounded-lg cursor-pointer transition-all flex flex-col justify-between ${
-                      selecionado
+                    className={`p-3 border-2 rounded-lg cursor-pointer transition-all flex flex-col justify-between ${selecionado
                         ? 'border-emerald-500 bg-emerald-50/50'
                         : 'border-slate-200 hover:border-slate-300 bg-white'
-                    }`}
+                      }`}
                   >
                     <div>
                       <strong className="block text-slate-800">{item.titulo}</strong>
@@ -500,21 +497,19 @@ export default function PainelRecomendador() {
                     <div className="flex gap-2">
                       <button
                         onClick={() => setAvaliacoesManuais((p) => ({ ...p, [item.id]: true }))}
-                        className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-                          avaliacoesManuais[item.id] === true
+                        className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${avaliacoesManuais[item.id] === true
                             ? 'bg-emerald-600 text-white'
                             : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        }`}
+                          }`}
                       >
                         👍 Relevante
                       </button>
                       <button
                         onClick={() => setAvaliacoesManuais((p) => ({ ...p, [item.id]: false }))}
-                        className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${
-                          avaliacoesManuais[item.id] === false
+                        className={`px-2.5 py-1 text-xs font-medium rounded transition-colors ${avaliacoesManuais[item.id] === false
                             ? 'bg-rose-600 text-white'
                             : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                        }`}
+                          }`}
                       >
                         👎 Não Relevante
                       </button>

@@ -22,8 +22,8 @@ load_dotenv()
 LOCAL_HOST = os.getenv("DB_HOST", "localhost")
 LOCAL_PORT = os.getenv("DB_PORT", "5432")
 LOCAL_NAME = os.getenv("DB_NAME", "sistema_de_recomendacao")
-LOCAL_USER = os.getenv("DB_USER", "postgres")
-LOCAL_PASS = os.getenv("DB_PASSWORD", "Itajujmv1")
+LOCAL_USER = os.getenv("DB_USER")
+LOCAL_PASS = os.getenv("DB_PASSWORD")
 
 def criar_tabelas_supabase(conn_remota):
     """Cria extensoes e tabelas no banco remoto ajustadas exatamente ao schema local."""
