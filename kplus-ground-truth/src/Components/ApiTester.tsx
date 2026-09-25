@@ -25,8 +25,8 @@ import type { Midia, ApiInspectorData } from './types';
 
 // Pesos calibrados do motor híbrido triplo (Fixos no código)
 const PESO_SEMANTICO = 0.5;
-const PESO_TEXTUAL = 0.2;
-const PESO_COLABORATIVO = 0.3;
+const PESO_TEXTUAL = 0.3;
+const PESO_COLABORATIVO = 0.2;
 
 interface ApiTesterProps {
   apiBaseUrl: string;
@@ -343,13 +343,12 @@ export default function ApiTester({
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 )}
                 <span
-                  className={`relative inline-flex rounded-full h-3 w-3 ${
-                    statusApi === 'online'
+                  className={`relative inline-flex rounded-full h-3 w-3 ${statusApi === 'online'
                       ? 'bg-emerald-500'
                       : statusApi === 'checando'
-                      ? 'bg-amber-400'
-                      : 'bg-rose-500'
-                  }`}
+                        ? 'bg-amber-400'
+                        : 'bg-rose-500'
+                    }`}
                 ></span>
               </span>
               <h2 className="text-xl font-black tracking-tight text-white flex items-center gap-2">
@@ -392,20 +391,19 @@ export default function ApiTester({
             {/* Status e Latência */}
             <div className="flex items-center gap-2">
               <span
-                className={`text-xs px-2.5 py-1 rounded-full font-semibold border flex items-center gap-1.5 ${
-                  statusApi === 'online'
+                className={`text-xs px-2.5 py-1 rounded-full font-semibold border flex items-center gap-1.5 ${statusApi === 'online'
                     ? 'bg-emerald-950/80 text-emerald-300 border-emerald-700/60'
                     : statusApi === 'checando'
-                    ? 'bg-amber-950/80 text-amber-300 border-amber-700/60'
-                    : 'bg-rose-950/80 text-rose-300 border-rose-700/60'
-                }`}
+                      ? 'bg-amber-950/80 text-amber-300 border-amber-700/60'
+                      : 'bg-rose-950/80 text-rose-300 border-rose-700/60'
+                  }`}
               >
                 <Activity className="w-3 h-3" />
                 {statusApi === 'online'
                   ? `Online (${latenciaApi ?? 0}ms)`
                   : statusApi === 'checando'
-                  ? 'Verificando...'
-                  : 'Desconectado'}
+                    ? 'Verificando...'
+                    : 'Desconectado'}
               </span>
 
               {/* Botão de Usuário / Login */}
@@ -471,22 +469,20 @@ export default function ApiTester({
           <div className="flex gap-2">
             <button
               onClick={() => setModo('busca')}
-              className={`px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-all ${
-                modo === 'busca'
+              className={`px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-all ${modo === 'busca'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+                }`}
             >
               <Search className="w-4 h-4" />
               Busca Híbrida Ativa (Cenário A)
             </button>
             <button
               onClick={() => setModo('feed')}
-              className={`px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-all ${
-                modo === 'feed'
+              className={`px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2 transition-all ${modo === 'feed'
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
                   : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-              }`}
+                }`}
             >
               <Sparkles className="w-4 h-4" />
               Feed por Popularidade / Ratings (Cenário B)
@@ -727,13 +723,12 @@ export default function ApiTester({
                       {/* BADGE DE SCORE */}
                       <div className="absolute top-2 right-2">
                         <span
-                          className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-lg backdrop-blur-md text-white ${
-                            scoreSeguro >= 0.7
+                          className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-lg shadow-lg backdrop-blur-md text-white ${scoreSeguro >= 0.7
                               ? 'bg-emerald-600/90'
                               : scoreSeguro >= 0.4
-                              ? 'bg-blue-600/90'
-                              : 'bg-indigo-600/90'
-                          }`}
+                                ? 'bg-blue-600/90'
+                                : 'bg-indigo-600/90'
+                            }`}
                         >
                           {pontuacaoFormatada}% Match
                         </span>
@@ -810,9 +805,8 @@ export default function ApiTester({
                             disabled={avaliandoId === midia.id}
                             onClick={() => handleAvaliarMidia(midia, estrela)}
                             title={`Avaliar com nota ${estrela}`}
-                            className={`p-1 rounded hover:scale-125 transition-transform ${
-                              (avaliacaoAtual ?? 0) >= estrela ? 'text-amber-500' : 'text-slate-300 hover:text-amber-400'
-                            }`}
+                            className={`p-1 rounded hover:scale-125 transition-transform ${(avaliacaoAtual ?? 0) >= estrela ? 'text-amber-500' : 'text-slate-300 hover:text-amber-400'
+                              }`}
                           >
                             <Star className="w-4 h-4 fill-current" />
                           </button>
@@ -849,18 +843,16 @@ export default function ApiTester({
               <button
                 type="button"
                 onClick={() => setAbaAuth('login')}
-                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-                  abaAuth === 'login' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${abaAuth === 'login' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
               >
                 Login
               </button>
               <button
                 type="button"
                 onClick={() => setAbaAuth('registro')}
-                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${
-                  abaAuth === 'registro' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                className={`flex-1 py-1.5 text-xs font-bold rounded-lg transition-colors ${abaAuth === 'registro' ? 'bg-indigo-600 text-white' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                  }`}
               >
                 Cadastro
               </button>

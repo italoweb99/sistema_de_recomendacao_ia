@@ -175,35 +175,278 @@ Isso reduz o consumo de RAM em ~30% ao desabilitar paralelismo desnecessário.
 
 ---
 
-### Opção C: Oracle Cloud Always Free (Melhor Performance — 24 GB RAM Permanentemente)
+### Opção C: Oracle Cloud Always Free — Guia Completo (24 GB RAM Permanentemente)
 
-A Oracle oferece **instâncias ARM com 4 vCPUs e 24 GB de RAM permanentemente grátis** (sem limite de tempo, sem cartão obrigatório após ativação). É a melhor opção técnica, mas requer mais configuração manual.
+A Oracle oferece **instâncias ARM com 4 vCPUs e 24 GB de RAM permanentemente grátis** (sem limite de tempo e sem cobrança). É a melhor opção técnica para este projeto.
 
-1. Crie uma conta em [cloud.oracle.com](https://cloud.oracle.com) (requer cartão de crédito para verificação, mas **não cobra nada** no Always Free).
-2. Crie uma instância **Ampere A1 Compute** (ARM):
-   - Shape: `VM.Standard.A1.Flex` → 4 OCPUs, 24 GB RAM
-   - Imagem: `Canonical Ubuntu 22.04`
-3. Configure regras de firewall (Security Lists) para liberar as portas **22 (SSH)** e **8000 (API)**.
-4. Conecte via SSH e execute:
-   ```bash
-   # Instala dependências
-   sudo apt update && sudo apt install -y python3-pip python3-venv git
-   git clone https://github.com/SEU_USUARIO/sistema_de_recomendacao_ia.git
-   cd sistema_de_recomendacao_ia
+---
 
-   # Cria ambiente virtual e instala
-   python3 -m venv venv && source venv/bin/activate
-   pip install -r requirements.txt
+#### C.1 — Criar a Conta Oracle Cloud
 
-   # Configura variáveis de ambiente
-   export DATABASE_URL="sua_url_supabase"
-   export JWT_KEY="sua_chave_jwt"
-   export SECRET_KEY="sua_chave_secreta"
+1. Acesse [cloud.oracle.com](https://cloud.oracle.com) e clique em **"Try Oracle Cloud Free Tier"**.
+2. Preencha seus dados (nome, e-mail, país → selecione **Brazil**).
+3. Escolha sua **Home Region** — selecione **Brazil East (São Paulo)** para menor latência.
+4. Informe um cartão de crédito válido (usado **apenas para verificação de identidade**; o plano Always Free **nunca cobra**).
+5. Aguarde o e-mail de confirmação e faça login no **Oracle Cloud Console**.
 
-   # Inicia com systemd (para manter rodando após fechar o SSH)
-   uvicorn Api.main:app --host 0.0.0.0 --port 8000
-   ```
-5. Para tornar permanente, configure um serviço `systemd` ou use `pm2` + `nohup`.
+---
+
+#### C.2 — Criar a Instância VM (Ampere A1 ARM)
+
+1. No menu principal (☰), vá em **Compute** → **Instances** → **Create Instance**.
+2. Preencha:
+   - **Name**: `kplus-api-server`
+   - **Compartment**: deixe o padrão (root)
+3. Em **Image and shape**, clique em **Edit**:
+   - **Image**: `Canonical Ubuntu` → selecione **Ubuntu 22.04 Minimal (aarch64)**
+     > ⚠️ Para a arquitetura ARM (aarch64), a Oracle disponibiliza apenas a imagem **Minimal**. Ela não tem interface gráfica e vem sem alguns pacotes, mas funciona perfeitamente para servidores — os comandos do passo C.5 instalam tudo o que falta.
+   - **Shape**: clique em **Change Shape** → selecione **Ampere** → `VM.Standard.A1.Flex`
+   - Defina **4 OCPUs** e **24 GB RAM** (dentro do limite Always Free)
+4. Em **Networking**, deixe a VCN padrão criada automaticamente (ou crie uma nova).
+5. Em **Add SSH keys**:
+   - Selecione **Generate a key pair for me**
+   - Clique em **Save private key** para baixar o arquivo `ssh-key-XXXXX.key`
+   - Guarde este arquivo com segurança — é a única forma de acessar o servidor!
+6. Clique em **Create**. A instância ficará no estado **Provisioning** por ~2 minutos, depois **Running**.
+7. Anote o **IP Público** da instância (visível na tela de detalhes).
+
+> #### ⚠️ Erro "Out of capacity for shape VM.Standard.A1.Flex"?
+>
+> Esse erro é **extremamente comum** — as instâncias ARM gratuitas são muito disputadas. Tente as soluções abaixo **em ordem**:
+>
+> **Solução 1 — Trocar o Availability Domain:**
+> Na tela de criação, role até **Placement** e mude o **Availability domain** de `AD-1` para `AD-2` ou `AD-3` (se disponíveis na sua região). São Paulo geralmente tem apenas 1 AD, mas vale tentar.
+>
+> **Solução 2 — Remover o Fault Domain:**
+> Na mesma seção **Placement**, certifique-se de que **Fault domain** está como `Let Oracle choose` (sem valor fixo). Clique em **Create** novamente.
+>
+> **Solução 3 — Script de Retry Automático (mais eficaz):**
+> A Oracle libera capacidade aleatoriamente ao longo do dia. O método mais confiável é um script que tenta criar a instância repetidamente até conseguir. Instale a [OCI CLI](https://docs.oracle.com/en-us/iaas/Content/API/SDKDocs/cliinstall.htm) e configure com `oci setup config`, depois adapte o script:
+>
+> ```powershell
+> # Script PowerShell — tenta criar a instância a cada 5 minutos
+> # Preencha os valores abaixo com os dados do seu ambiente OCI
+> $compartmentId  = "ocid1.compartment.oc1..SEU_COMPARTMENT_OCID"
+> $subnetId       = "ocid1.subnet.oc1.sa-saopaulo-1.SEU_SUBNET_OCID"
+> $imageId        = "ocid1.image.oc1.sa-saopaulo-1.SEU_IMAGE_OCID"  # Ubuntu 22.04 Minimal aarch64
+> $sshPublicKey   = Get-Content "$HOME\.ssh\id_rsa.pub" -Raw
+>
+> while ($true) {
+>     $result = oci compute instance launch `
+>         --availability-domain "qFyq:SA-SAOPAULO-1-AD-1" `
+>         --compartment-id $compartmentId `
+>         --shape "VM.Standard.A1.Flex" `
+>         --shape-config '{"ocpus": 4, "memoryInGBs": 24}' `
+>         --image-id $imageId `
+>         --subnet-id $subnetId `
+>         --assign-public-ip true `
+>         --ssh-authorized-keys-file "$HOME\.ssh\id_rsa.pub" `
+>         --display-name "kplus-api-server" 2>&1
+>
+>     if ($LASTEXITCODE -eq 0) {
+>         Write-Host "✅ Instância criada com sucesso!" -ForegroundColor Green
+>         break
+>     }
+>     Write-Host "$(Get-Date -Format 'HH:mm:ss') — Sem capacidade. Tentando de novo em 5 minutos..." -ForegroundColor Yellow
+>     Start-Sleep -Seconds 300
+> }
+> ```
+>
+> > 💡 **Dica**: Deixe o script rodando em segundo plano (minimizado). Normalmente a capacidade abre em algumas horas, às vezes minutos. Muitos usuários conseguem em menos de 24h.
+
+
+---
+
+#### C.3 — Abrir as Portas no Firewall da Oracle (Security List)
+
+Por padrão, a Oracle bloqueia todas as portas exceto 22 (SSH). Você precisa abrir as portas 80 (HTTP) e 443 (HTTPS):
+
+1. Na tela da instância, clique na **Subnet** listada em **Primary VNIC**.
+2. Na tela da Subnet, clique em **Security List** (geralmente `Default Security List for...`).
+3. Clique em **Add Ingress Rules** e adicione as seguintes regras:
+
+   | Source CIDR | Protocol | Port Range | Descrição |
+   |---|---|---|---|
+   | `0.0.0.0/0` | TCP | `80` | HTTP |
+   | `0.0.0.0/0` | TCP | `443` | HTTPS |
+
+4. Clique em **Add Ingress Rules** para salvar.
+
+---
+
+#### C.4 — Conectar ao Servidor via SSH
+
+**No Windows (PowerShell):**
+```powershell
+# Ajuste as permissões da chave (necessário no Windows)
+icacls "C:\caminho\para\ssh-key-XXXXX.key" /inheritance:r /grant:r "$($env:USERNAME):R"
+
+# Conecte ao servidor (substitua pelo seu IP público)
+ssh -i "C:\caminho\para\ssh-key-XXXXX.key" ubuntu@SEU_IP_PUBLICO
+```
+
+---
+
+#### C.5 — Configurar o Servidor Ubuntu
+
+Após conectar via SSH, execute os comandos abaixo **em ordem**:
+
+```bash
+# 1. Atualizar o sistema
+sudo apt update && sudo apt upgrade -y
+
+# 2. Instalar dependências
+sudo apt install -y python3-pip python3-venv git nginx certbot python3-certbot-nginx
+
+# 3. Abrir portas no firewall interno do Ubuntu (iptables)
+sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 443 -j ACCEPT
+sudo iptables -I INPUT -p tcp --dport 8000 -j ACCEPT
+sudo apt install -y iptables-persistent
+sudo netfilter-persistent save
+
+# 4. Clonar o repositório
+git clone https://github.com/SEU_USUARIO/sistema_de_recomendacao_ia.git
+cd sistema_de_recomendacao_ia
+
+# 5. Criar ambiente virtual e instalar dependências Python
+python3 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install torch --index-url https://download.pytorch.org/whl/cpu
+pip install -r requirements.txt
+```
+
+---
+
+#### C.6 — Configurar as Variáveis de Ambiente
+
+```bash
+# Crie o arquivo de variáveis de ambiente
+sudo nano /etc/kplus-api.env
+```
+
+Cole o conteúdo abaixo (substituindo pelos seus valores reais):
+```
+DATABASE_URL=postgresql://postgres.XXXXX:SUA_SENHA@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?sslmode=require
+JWT_KEY=kplus_jwt_super_secreto_2026_troque_por_algo_aleatorio
+SECRET_KEY=kplus_secret_key_2026_troque_por_algo_aleatorio
+PORT=8000
+```
+
+Salve com `Ctrl+O`, `Enter`, `Ctrl+X`.
+
+```bash
+# Proteja o arquivo de variáveis
+sudo chmod 600 /etc/kplus-api.env
+```
+
+---
+
+#### C.7 — Criar o Serviço systemd (Reinício Automático)
+
+```bash
+sudo nano /etc/systemd/system/kplus-api.service
+```
+
+Cole o conteúdo:
+```ini
+[Unit]
+Description=KPlus API - Recomendador Híbrido Triplo
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/sistema_de_recomendacao_ia
+EnvironmentFile=/etc/kplus-api.env
+ExecStart=/home/ubuntu/sistema_de_recomendacao_ia/venv/bin/uvicorn Api.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Salve e ative o serviço:
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable kplus-api
+sudo systemctl start kplus-api
+
+# Verificar se está rodando:
+sudo systemctl status kplus-api
+```
+
+Se aparecer `active (running)` em verde, o servidor está funcionando! ✅
+
+---
+
+#### C.8 — Configurar o Nginx como Proxy Reverso (com HTTPS grátis)
+
+```bash
+sudo nano /etc/nginx/sites-available/kplus-api
+```
+
+Cole o conteúdo (substitua `SEU_DOMINIO.com` pelo seu domínio ou IP):
+```nginx
+server {
+    listen 80;
+    server_name SEU_DOMINIO.com;
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_read_timeout 120s;
+    }
+}
+```
+
+```bash
+# Ativar a configuração
+sudo ln -s /etc/nginx/sites-available/kplus-api /etc/nginx/sites-enabled/
+sudo nginx -t   # Verifica se não há erros de sintaxe
+sudo systemctl restart nginx
+```
+
+---
+
+#### C.9 — HTTPS Gratuito com Let's Encrypt (opcional, requer domínio)
+
+> 💡 Se você não tem um domínio, pode usar um subdomínio gratuito em [duckdns.org](https://duckdns.org) — crie um subdomínio como `kplus-api.duckdns.org` apontando para o IP da Oracle.
+
+```bash
+# Instalar certificado SSL (substitua pelo seu domínio)
+sudo certbot --nginx -d SEU_DOMINIO.com
+
+# Renovação automática (já configurada pelo certbot, verifique com):
+sudo systemctl status certbot.timer
+```
+
+Após o certbot, seu backend estará disponível em `https://SEU_DOMINIO.com` com SSL gratuito!
+
+---
+
+#### C.10 — Comandos Úteis de Manutenção
+
+```bash
+# Ver logs em tempo real da API
+sudo journalctl -u kplus-api -f
+
+# Reiniciar a API após atualizar o código
+cd ~/sistema_de_recomendacao_ia && git pull
+sudo systemctl restart kplus-api
+
+# Verificar uso de memória (deve ficar em ~1.2 GB dos 24 GB disponíveis)
+free -h
+
+# Verificar status do servidor web
+sudo systemctl status nginx
+```
 
 ---
 
